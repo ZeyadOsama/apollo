@@ -5,3 +5,9 @@
 # here.
 #
 # Please keep the list sorted by first names.
+
+
+Zeyad Osama <zeyad.osama@gmail.com>
+Omar Marzouk <omaraziz255.osama@gmail.com>
+Marwan Elsafty <marwan.safty@gmail.com>
+Rewan Maklad <rewan.kadry@gmail.com>

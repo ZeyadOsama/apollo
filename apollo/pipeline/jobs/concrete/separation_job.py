@@ -10,7 +10,7 @@ __author__ = "Zeyad Osama"
 __license__ = "MIT License"
 
 from apollo.common.misc.constants import ReturnCode
-from apollo.pipeline.pipeline.jobs.interface.job import Job
+from apollo.pipeline.jobs.interface.job import Job
 
 
 class SeparationJob(Job):

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding: utf8
 
 """
 job.py:
@@ -6,9 +7,14 @@ File containing Job class to be used as the executors for the pipeline.
 """
 
 __author__ = "Zeyad Osama"
+__license__ = "MIT License"
+
+from abc import ABC, abstractmethod
+
+from apollo.common.misc.constants import ReturnCode
 
 
-class Job:
+class Job(ABC):
     """
     Job class to be used as the executors for the pipeline.
     """
@@ -16,14 +22,18 @@ class Job:
     def __init__(self) -> None:
         super().__init__()
 
-    def initialize(self):
+    @abstractmethod
+    def initialize(self) -> ReturnCode:
         pass
 
-    def terminate(self):
+    @abstractmethod
+    def terminate(self) -> ReturnCode:
         pass
 
-    def feed(self):
+    @abstractmethod
+    def feed(self) -> ReturnCode:
         pass
 
+    @abstractmethod
     def execute(self):
         pass

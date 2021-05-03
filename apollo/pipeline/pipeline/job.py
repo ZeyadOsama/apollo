@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
-"""job.py: File containing Job class to be used as the executors for the pipeline."""
+"""
+job.py:
+File containing Job class to be used as the executors for the pipeline.
+"""
 
 __author__ = "Zeyad Osama"
 

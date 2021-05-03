@@ -1,11 +1,20 @@
-# Importing required libraries.
+#!/usr/bin/env python
+# coding: utf8
 
-from flask import Flask, render_template, request, Response, redirect, url_for
-from werkzeug.utils import secure_filename
-from pydub import AudioSegment
-from pydub.playback import play
+"""
+app.py:
+"""
+
+__author__ = "Omar Marzouk"
+__license__ = "MIT License"
+
 import subprocess
 import wave
+
+from flask import Flask, render_template, request, redirect
+from pydub import AudioSegment
+from pydub.playback import play
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 

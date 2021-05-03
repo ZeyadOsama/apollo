@@ -1,6 +1,7 @@
 body {
     background-color: powderblue;
-  }
+}
+
 h1 {
     border: 4px #eee solid;
     color: red;
@@ -9,6 +10,7 @@ h1 {
     padding: 20px;
     margin: 50px;
 }
+
 h2 {
     border: 3px #ccc solid;
     color: blue;
@@ -17,10 +19,11 @@ h2 {
     padding: 20px;
     margin: 40px;
 }
+
 p {
     border: 3px #ccc solid;
     color: rgb(0, 238, 255);
     font-family: 'Times New Roman';
     padding: 30px;
     margin: 40px;
-  }
+}

@@ -1,12 +1,23 @@
 # Importing required libraries.
 import os
 
-from flask import Flask, render_template, request, Response, redirect, url_for
-from werkzeug.utils import secure_filename
-from pydub import AudioSegment
-from pydub.playback import play
+#!/usr/bin/env python
+# coding: utf8
+
+"""
+app.py:
+"""
+
+__author__ = "Omar Marzouk"
+__license__ = "MIT License"
+
 import subprocess
 import wave
+
+from flask import Flask, render_template, request, redirect
+from pydub import AudioSegment
+from pydub.playback import play
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 RESULTS_DIR = "results/"
@@ -20,7 +31,7 @@ def upload_file():
 
 @app.route('/', methods=['GET', 'POST'])
 def uploaded_file():
-    dst = RESULTS_DIR+RESULT_FILE
+    dst = RESULTS_DIR + RESULT_FILE
 
     if request.method == 'POST':
         if 'file' not in request.files:

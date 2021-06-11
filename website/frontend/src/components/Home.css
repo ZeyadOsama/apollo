@@ -1,0 +1,119 @@
+﻿ h1 {
+    color: #ffffff;
+    font-size: 55px;
+    line-height: 79px;
+    font-weight: 800;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-image:url(/Users/rewanmaklad/Desktop/GradProj/apollo/website/frontend/src/components/images/background.jpg);
+    background-size:cover;
+
+
+} 
+
+ #exampleFormControlFile1 {
+    position: relative;
+    transition: .5s ease;
+    /* top: 191px;
+    left: 420px;
+    right: -420px;
+    bottom: -191px; */
+} 
+
+/* .btn-light {
+    position: relative;
+    transition: .5s ease;
+    top: 200px;
+    left: 420px;
+    right: 440px;
+    bottom: -191px;
+}
+
+.btn-primary {
+    position: relative;
+    top: 200px;
+    left: 100px;
+    
+    
+}
+
+.btn-secondary {
+    position: relative;
+    top: 200px;
+    left: 180px;
+}
+
+
+.audio-element1 {
+    position: relative;
+    top: 10px;
+    left: 80px;
+}
+
+.btn-info {
+    position: relative;
+    top: 200px;
+    left: 800px;
+}*/ 
+
+ .btn-secondary{
+
+    background-color: white;
+    border-radius: 20px;
+    color: rgb(43, 0, 25);
+
+} 
+
+.btn-outline-secondary{
+
+
+    /* border-radius: 20px; */
+    /* border: 2px solid #887e7e; */
+    color: rgb(201, 39, 88);
+    
+
+}
+
+audio{
+ 
+    border-radius: 10px;
+
+}
+
+.jumbotron {
+    margin: 15px 30px 0px 30px;
+    border-radius: 10px;
+    background: rgba(36, 33, 35, 0.418);
+    opacity: 0.8;
+    border-color: black;
+  
+}
+
+
+#example1{
+
+    border: 1px solid;
+    padding: 29px;
+    width: 250px;
+    height: 120px;
+    margin: 25px;
+    color: white;
+    background-color: #e0873371;
+}
+#example1:hover{
+
+    color: rgb(201, 39, 88);
+    background-color: rgba(255, 255, 255, 0.226);
+    border: 2px solid;
+
+}
+.meh{
+    display: flex;
+  justify-content: center;
+}

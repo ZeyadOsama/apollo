@@ -11,11 +11,11 @@
 }
 
 body {
-    background-image:url(/Users/rewanmaklad/Desktop/GradProj/apollo/website/frontend/src/components/images/background.jpg);
+    background-image:url(./images/background.jpg);
     background-size:cover;
 
 
-} 
+}
 
  #exampleFormControlFile1 {
     position: relative;
@@ -24,7 +24,7 @@ body {
     left: 420px;
     right: -420px;
     bottom: -191px; */
-} 
+}
 
 /* .btn-light {
     position: relative;
@@ -39,8 +39,8 @@ body {
     position: relative;
     top: 200px;
     left: 100px;
-    
-    
+
+
 }
 
 .btn-secondary {
@@ -60,7 +60,7 @@ body {
     position: relative;
     top: 200px;
     left: 800px;
-}*/ 
+}*/
 
  .btn-secondary{
 
@@ -68,7 +68,7 @@ body {
     border-radius: 20px;
     color: rgb(43, 0, 25);
 
-} 
+}
 
 .btn-outline-secondary{
 
@@ -76,12 +76,12 @@ body {
     /* border-radius: 20px; */
     /* border: 2px solid #887e7e; */
     color: rgb(201, 39, 88);
-    
+
 
 }
 
 audio{
- 
+
     border-radius: 10px;
 
 }
@@ -92,19 +92,21 @@ audio{
     background: rgba(36, 33, 35, 0.418);
     opacity: 0.8;
     border-color: black;
-  
+    padding: 20px;
+
 }
 
 
 #example1{
 
     border: 1px solid;
-    padding: 29px;
+    padding: 25px;
     width: 250px;
-    height: 120px;
+    height: 150px;
     margin: 25px;
     color: white;
     background-color: #e0873371;
+    width: 250px;
 }
 #example1:hover{
 

@@ -14,19 +14,17 @@ __license__ = "MIT License"
 import subprocess
 import wave
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, send_file
+from flask_cors import CORS, cross_origin
 from pydub import AudioSegment
 from pydub.playback import play
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+cors = CORS(app, expose_headers='Authorization')
+app.config['CORS_HEADERS'] = 'Content-Type'
 RESULTS_DIR = "results/"
 RESULT_FILE = "audio.wav"
-
-
-@app.route('/')
-def upload_file():
-    return render_template('upload.html')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -34,12 +32,7 @@ def uploaded_file():
     dst = RESULTS_DIR + RESULT_FILE
 
     if request.method == 'POST':
-        if 'file' not in request.files:
-            return redirect(request.url)
-
-        f = request.files['file']
-        if f.filename == "":
-            return redirect(request.url)
+        f = request.files["myFile"]
 
         path = "audio_dataset/" + f.filename
         print(f.filename)
@@ -58,8 +51,7 @@ def uploaded_file():
         else:
             f.save(RESULTS_DIR + secure_filename(f.filename))
 
-    return render_template('upload.html')
-
+    return "done!"
 
 def read_wav_file(filename):
     with wave.open(filename, 'rb') as w:
@@ -68,6 +60,16 @@ def read_wav_file(filename):
         dur = frames / float(rate)
 
     return dur
+
+
+@app.route('/TwoStems', methods=['GET'])
+def downloaded_file():
+    if request.method == 'GET':
+        path_to_file = "results/audio.wav"
+        return send_file(path_to_file,
+        mimetype="audio/wav", as_attachment=True,
+        attachment_filename="audio.wav")
+
 
 
 if __name__ == '__main__':

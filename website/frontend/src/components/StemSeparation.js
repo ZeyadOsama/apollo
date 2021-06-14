@@ -12,11 +12,6 @@ export class StemSeparation extends Component {
 
                     <h1>Stem Separation!</h1>
                     <br />
-                    
-                <audio controls class="audio-element1">
-                    <source src="/test.mp3" type="audio/mp3"></source>
-
-                    </audio>
                     <hr />
                     <br />
                     <div className="">
@@ -27,20 +22,20 @@ export class StemSeparation extends Component {
             <div class="col-md-12">
                 <div class="row">
                 <div class="meh">
-                            
+
                                 <div class="col-md-4">  <a id="example1" href="/TwoStems" class="btn btn-outline-secondary btn-lg" >2 Stems Separation
                                 <h5>Vocal & Instumentals</h5></a></div>
-                               
+
                                 <div class="col-md-4">  <a id="example1" href="/FourStems" class="btn btn-outline-secondary btn-lg" >4 Stems Separation
                                 <h5>Vocal, Bass, Drums<br></br> & Instumentals</h5></a></div>
-                               
+
                                 <div class="col-md-4">  <a id="example1" href="/FiveStems" class="btn btn-outline-secondary btn-lg" >5 Stems Separation
                                 <h5>Vocal, Bass, Drums, Piano<br></br> & Instumentals</h5></a></div>
-                   
+
                                 </div>
                     </div>
                 </div>
-                 
+
                 </div>
                 </div>
             </div>

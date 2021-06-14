@@ -13,10 +13,9 @@ export class Tools extends Component {
 
                     <br />
 
-                    <audio controls class="audio-element1">
-                        <source src="/test.mp3" type="audio/mp3"></source>
-
-                    </audio>
+                    {/*}<audio controls class="audio-element1">
+                    <source src="myAudio.mp3" type="audio/mp3" />
+                    </audio> */}
                     <br />
 
                     <hr />

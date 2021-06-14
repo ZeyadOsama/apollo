@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+import  { Home }  from './components/Home';
 import { howitworks } from './components/howitworks';
 import { faq } from './components/faq';
 import { Tools } from './components/Tools';
@@ -14,7 +14,7 @@ import { FiveStems } from './components/FiveStems';
 import { FourStems } from './components/FourStems';
 import { NavMenu } from './components/NavMenu';
 
-import { BrowserRouter as Switch, Router } from 'react-router-dom';
+import {Switch, Router } from 'react-router-dom';
 import history from './components/history'
 
 

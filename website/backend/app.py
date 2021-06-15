@@ -1,7 +1,7 @@
 # Importing required libraries.
 import os
 
-#!/usr/bin/env python
+# !/usr/bin/env python
 # coding: utf8
 
 """
@@ -53,6 +53,7 @@ def uploaded_file():
 
     return "done!"
 
+
 def read_wav_file(filename):
     with wave.open(filename, 'rb') as w:
         rate = w.getframerate()
@@ -67,9 +68,44 @@ def downloaded_file():
     if request.method == 'GET':
         path_to_file = "results/audio.wav"
         return send_file(path_to_file,
-        mimetype="audio/wav", as_attachment=True,
-        attachment_filename="audio.wav")
+                         mimetype="audio/wav", as_attachment=True,
+                         attachment_filename="audio.wav")
 
+
+@app.route('/TwoStems', methods=['GET'])
+def downloaded_file():
+    if request.method == 'GET':
+        path_to_file = "results/audio.wav"
+        return send_file(path_to_file,
+                         mimetype="audio/wav", as_attachment=True,
+                         attachment_filename="audio.wav")
+
+
+@app.route('/FourStems', methods=['GET'])
+def downloaded_file():
+    if request.method == 'GET':
+        path_to_file = "results/audio.wav"
+        return send_file(path_to_file,
+                         mimetype="audio/wav", as_attachment=True,
+                         attachment_filename="audio.wav")
+
+
+@app.route('/FiveStems', methods=['GET'])
+def downloaded_file():
+    if request.method == 'GET':
+        path_to_file = "results/audio.wav"
+        return send_file(path_to_file,
+                         mimetype="audio/wav", as_attachment=True,
+                         attachment_filename="audio.wav")
+
+
+@app.route('/MusicTagging', methods=['GET'])
+def downloaded_file():
+    if request.method == 'GET':
+        path_to_file = "results/audio.wav"
+        return send_file(path_to_file,
+                         mimetype="audio/wav", as_attachment=True,
+                         attachment_filename="audio.wav")
 
 
 if __name__ == '__main__':

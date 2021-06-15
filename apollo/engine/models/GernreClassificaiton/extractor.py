@@ -145,6 +145,7 @@ def extractor(file_name, model='MTT_musicnn', input_length=3, input_overlap=Fals
     sess = tf.compat.v1.Session()
     sess.run(tf.compat.v1.global_variables_initializer())
     saver = tf.compat.v1.train.Saver()
+    print("***********************************************************************" + os.path.dirname(__file__)+'/'+model+'/')
     try:
         saver.restore(sess, os.path.dirname(__file__)+'/'+model+'/')
     except:

@@ -7,13 +7,15 @@ import withRouter from 'react-router-dom';
 import history from './history';
 import axios from 'axios';
 
+
 export class Home extends Component {
   state = {
-    selectedFile: null
+    selectedFile: null,
+      source: ""
   }
 
   onFileChange = event => {
-    this.setState({selectedFile: event.target.files[0]});
+    this.setState({selectedFile: event.target.files[0], source:event.target.files[0].name});
   };
 
   onFileUpload = () => {
@@ -24,14 +26,7 @@ export class Home extends Component {
     history.push("/Tools");
   }
 
-
-
-
-
-
-
-
-render() {
+  render() {
 return (
       <div className="blekh">
 

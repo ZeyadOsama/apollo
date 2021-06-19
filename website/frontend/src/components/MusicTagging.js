@@ -24,8 +24,7 @@ export class MusicTagging extends Component {
             <Container>
                 <h1>Music Tagging!</h1>
 
-                <audio controls class="audio-element1">
-                    // <source src="/test.mp3" type="audio/mp3"></source>
+                <audio src="http://localhost:5000/Original" controls className="audio-element1">
 
                 </audio>
                 <hr />

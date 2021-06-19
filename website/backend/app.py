@@ -14,7 +14,7 @@ __license__ = "MIT License"
 import subprocess
 import wave
 
-from flask import Flask, render_template, request, redirect, send_file,jsonify
+from flask import Flask, render_template, request, redirect, send_file,jsonify, Response
 from flask_cors import CORS, cross_origin
 from pydub import AudioSegment
 from pydub.playback import play
@@ -51,7 +51,7 @@ def uploaded_file():
             secure = RESULTS_DIR + secure_filename(f.filename)
             f.save(secure)
             os.rename(secure,RESULTS_DIR + RESULT_MP3)
-            sound = AudioSegment.from_mp3(RESULT_MP3)
+            sound = AudioSegment.from_mp3(RESULTS_DIR + RESULT_MP3)
             sound.export(dst, format="wav")
             # play(sound)
 
@@ -111,6 +111,17 @@ def downloaded_file_tags():
             return send_file(path_to_file,
                              mimetype="audio/wav", as_attachment=True,
                              attachment_filename="audio.wav")
+
+
+@app.route("/Original")
+def stream_original():
+    def generate():
+        with open("results/audio.wav", "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+    return Response(generate(), mimetype="audio/x-wav")
 
 
 if __name__ == '__main__':

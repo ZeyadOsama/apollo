@@ -33,10 +33,10 @@ export class TwoStems extends Component {
                             <h5 className="">Original Audio File</h5>
                         </div>
                         <div class="col-9">
-                            <audio controls className="position-relative" >
-                                // <source src="/test.mp3" type="audio/mp3"></source>
+                <audio src="http://localhost:5000/Original" controls className="position-relative">
 
-                            </audio>
+                </audio>
+
                         </div>
                     </div>
 
@@ -51,6 +51,7 @@ export class TwoStems extends Component {
                             <h5 className="">Vocal</h5>
                         </div>
                         <div class="col-9">
+
                             <audio controls className="position-relative" >
                                 // <source src="/test.mp3" type="audio/mp3"></source>
 

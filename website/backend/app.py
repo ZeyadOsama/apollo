@@ -48,6 +48,7 @@ def uploaded_file():
         print(f.filename)
         if ".mp3" in f.filename:
             # convert mp3 to wav
+            os.remove(dst)
             secure = RESULTS_DIR + secure_filename(f.filename)
             f.save(secure)
             os.rename(secure,RESULTS_DIR + RESULT_MP3)

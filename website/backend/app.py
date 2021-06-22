@@ -14,7 +14,7 @@ __license__ = "MIT License"
 import subprocess
 import wave
 
-from flask import Flask, render_template, request, redirect, send_file,jsonify, Response
+from flask import Flask, render_template, request, redirect, send_file, jsonify, Response
 from flask_cors import CORS, cross_origin
 from pydub import AudioSegment
 from pydub.playback import play
@@ -24,7 +24,7 @@ import os, sys
 currDir = os.path.dirname(os.path.realpath(__file__))
 webDir = os.path.abspath(os.path.join(currDir, '..'))
 rootDir = os.path.abspath(os.path.join(webDir, '..'))
-if rootDir not in sys.path: # add parent dir to paths
+if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
 
 from apollo.engine.models.GernreClassificaiton.tagger import *
@@ -35,6 +35,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 RESULTS_DIR = "results/"
 RESULT_FILE = "audio.wav"
 RESULT_MP3 = "audio.mp3"
+PLOTS_DIR = "plots/"
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -51,7 +52,7 @@ def uploaded_file():
             os.remove(dst)
             secure = RESULTS_DIR + secure_filename(f.filename)
             f.save(secure)
-            os.rename(secure,RESULTS_DIR + RESULT_MP3)
+            os.rename(secure, RESULTS_DIR + RESULT_MP3)
             sound = AudioSegment.from_mp3(RESULTS_DIR + RESULT_MP3)
             sound.export(dst, format="wav")
             # play(sound)
@@ -106,7 +107,7 @@ def downloaded_file_tags():
     if request.method == 'GET':
         print(request.args)
         if "Tags" in request.args:
-            return jsonify(top_tags(RESULTS_DIR + RESULT_MP3))
+            return jsonify(extractor(RESULTS_DIR + RESULT_MP3), PLOTS_DIR)
         else:
             path_to_file = "results/audio.wav"
             return send_file(path_to_file,
@@ -122,6 +123,7 @@ def stream_original():
             while data:
                 yield data
                 data = fwav.read(1024)
+
     return Response(generate(), mimetype="audio/x-wav")
 
 

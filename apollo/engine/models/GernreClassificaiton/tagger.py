@@ -4,7 +4,7 @@ import numpy as np
 from apollo.engine.models.GernreClassificaiton.extractor import extractor
 
 
-def top_tags(file_name, model='MTT_musicnn', topN=3, input_length=3, input_overlap=False, print_tags=True, save_tags=False):
+def top_tags(file_name, model='MSD_musicnn', topN=5, input_length=10, input_overlap=False, print_tags=True, save_tags=False):
     ''' Predict the topN tags of the music-clip in file_name with the selected model.
 
     INPUT

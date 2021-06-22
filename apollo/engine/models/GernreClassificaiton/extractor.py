@@ -3,6 +3,8 @@ import numpy as np
 import librosa
 
 import tensorflow as tf
+import matplotlib.pyplot as plt
+
 # disable eager mode for tf.v1 compatibility with tf.v2
 tf.compat.v1.disable_eager_execution()
 
@@ -39,7 +41,7 @@ def batch_data(audio_file, n_frames, overlap):
 
     # compute the log-mel spectrogram with librosa
     audio, sr = librosa.load(audio_file, sr=config.SR)
-    audio_rep = librosa.feature.melspectrogram(y=audio, 
+    audio_rep = librosa.feature.melspectrogram(y=audio,
                                                sr=sr,
                                                hop_length=config.FFT_HOP,
                                                n_fft=config.FFT_SIZE,
@@ -52,7 +54,7 @@ def batch_data(audio_file, n_frames, overlap):
     last_frame = audio_rep.shape[0] - n_frames + 1
     # +1 is to include the last frame that range would not include
     for time_stamp in range(0, last_frame, overlap):
-        patch = np.expand_dims(audio_rep[time_stamp : time_stamp + n_frames, : ], axis=0)
+        patch = np.expand_dims(audio_rep[time_stamp: time_stamp + n_frames, :], axis=0)
         if first:
             batch = patch
             first = False
@@ -62,7 +64,8 @@ def batch_data(audio_file, n_frames, overlap):
     return batch, audio_rep
 
 
-def extractor(file_name, model='MTT_musicnn', input_length=3, input_overlap=False, extract_features=True):
+def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, input_overlap=False,
+              extract_features=True):
     '''Extract the taggram (the temporal evolution of tags) and features (intermediate representations of the model) of the music-clip in file_name with the selected model.
 
     INPUT
@@ -112,14 +115,14 @@ def extractor(file_name, model='MTT_musicnn', input_length=3, input_overlap=Fals
     Example: see our musicnn and vgg examples.
 
     '''
-    
+
     # select model
     if 'MTT' in model:
         labels = config.MTT_LABELS
     elif 'MSD' in model:
         labels = config.MSD_LABELS
     num_classes = len(labels)
-    
+
     if 'vgg' in model and input_length != 3:
         raise ValueError('Set input_length=3, the VGG models cannot handle different input lengths.')
 
@@ -138,24 +141,28 @@ def extractor(file_name, model='MTT_musicnn', input_length=3, input_overlap=Fals
         if 'vgg' in model:
             y, pool1, pool2, pool3, pool4, pool5 = models.define_model(x, is_training, model, num_classes)
         else:
-            y, timbral, temporal, cnn1, cnn2, cnn3, mean_pool, max_pool, penultimate = models.define_model(x, is_training, model, num_classes)
+            y, timbral, temporal, cnn1, cnn2, cnn3, mean_pool, max_pool, penultimate = models.define_model(x,
+                                                                                                           is_training,
+                                                                                                           model,
+                                                                                                           num_classes)
         normalized_y = tf.nn.sigmoid(y)
 
     # tensorflow: loading model
     sess = tf.compat.v1.Session()
     sess.run(tf.compat.v1.global_variables_initializer())
     saver = tf.compat.v1.train.Saver()
-    print(os.path.dirname(__file__)+'/'+model+'/')
+    print(os.path.dirname(__file__) + '/' + model + '/')
     try:
-        saver.restore(sess, os.path.dirname(__file__)+'/'+model+'/')
+        saver.restore(sess, os.path.dirname(__file__) + '/' + model + '/')
     except:
         if model == 'MSD_musicnn_big':
-            raise ValueError('MSD_musicnn_big model is only available if you install from source: python setup.py install')
+            raise ValueError(
+                'MSD_musicnn_big model is only available if you install from source: python setup.py install')
         elif model == 'MSD_vgg':
             raise ValueError('MSD_vgg model is still training... will be available soon! :)')
 
     # batching data
-    print('Computing spectrogram (w/ librosa) and tags (w/ tensorflow)..', end =" ")
+    print('Computing spectrogram (w/ librosa) and tags (w/ tensorflow)..', end=" ")
     batch, spectrogram = batch_data(file_name, n_frames, overlap)
 
     # tensorflow: extract features and tags
@@ -168,9 +175,9 @@ def extractor(file_name, model='MTT_musicnn', input_length=3, input_overlap=Fals
     else:
         extract_vector = [normalized_y]
 
-    tf_out = sess.run(extract_vector, 
-                      feed_dict={x: batch[:config.BATCH_SIZE], 
-                      is_training: False})
+    tf_out = sess.run(extract_vector,
+                      feed_dict={x: batch[:config.BATCH_SIZE],
+                                 is_training: False})
 
     if extract_features:
         if 'vgg' in model:
@@ -197,13 +204,12 @@ def extractor(file_name, model='MTT_musicnn', input_length=3, input_overlap=Fals
 
     taggram = np.array(predicted_tags)
 
-
     # ..rest of the batches!
     for id_pointer in range(config.BATCH_SIZE, batch.shape[0], config.BATCH_SIZE):
 
-        tf_out = sess.run(extract_vector, 
-                          feed_dict={x: batch[id_pointer:id_pointer+config.BATCH_SIZE], 
-                          is_training: False})
+        tf_out = sess.run(extract_vector,
+                          feed_dict={x: batch[id_pointer:id_pointer + config.BATCH_SIZE],
+                                     is_training: False})
 
         if extract_features:
             if 'vgg' in model:
@@ -231,9 +237,77 @@ def extractor(file_name, model='MTT_musicnn', input_length=3, input_overlap=Fals
     sess.close()
     print('done!')
 
+    plotter(input_length, taggram, labels, output_folder)
+
     if extract_features:
         return taggram, labels, features
     else:
         return taggram, labels
 
 
+def plotter(input_length, taggram, tags, output_folder):
+    plt.rcParams["figure.figsize"] = (60, 15)  # set size of the figures
+    fontsize = 12  # set figures font size
+
+    # Plot Taggram for the labels
+
+    fig, ax = plt.subplots()
+    # title
+    ax.title.set_text('Taggram')
+    ax.title.set_fontsize(fontsize)
+    # x-axis title
+    ax.set_xlabel('(seconds)', fontsize=fontsize)
+    # y-axis
+    y_pos = np.arange(len(tags))
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(tags, fontsize=fontsize - 1)
+    # x-axis
+    x_pos = np.arange(taggram.shape[0])
+    x_label = np.arange(input_length / 2, input_length * taggram.shape[0], 3)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(x_label, fontsize=fontsize)
+    # depict taggram
+    ax.imshow(taggram.T, interpolation=None, aspect="auto")
+    plt.savefig(output_folder + "/Taggram")
+
+    # Plot Bar chart for the labels
+
+    plt.rcParams["figure.figsize"] = (10, 8)  # set size of the figures
+    tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
+    fig, ax = plt.subplots()
+    # title
+    ax.title.set_text('Tags likelihood (mean of the taggram)')
+    ax.title.set_fontsize(fontsize)
+    # y-axis title
+    ax.set_ylabel('(likelihood)', fontsize=fontsize)
+    # y-axis
+    ax.set_ylim((0, 1))
+    ax.tick_params(axis="y", labelsize=fontsize)
+    # x-axis
+    ax.tick_params(axis="x", labelsize=fontsize - 1)
+    pos = np.arange(len(tags))
+    ax.set_xticks(pos)
+    ax.set_xticklabels(tags, rotation=90)
+    # depict song-level tags likelihood
+    ax.bar(pos, tags_likelihood_mean)
+    plt.savefig(output_folder + "/Tags_Likelihood")
+
+    # Plot Pie Chart
+
+    plt.rcParams["figure.figsize"] = (10, 8)  # set size of the figures
+    tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
+    indices = np.argsort(-tags_likelihood_mean)[:5]
+    tags_likelihood_mean = tags_likelihood_mean[indices]
+    tags = list(np.array(tags)[indices.astype(int)])
+
+    labels = tags + ["others"]
+    sizes = np.append(tags_likelihood_mean, 1.0 - sum(tags_likelihood_mean))
+    explode = [0] * len(labels)
+    explode[0] = 0.2
+
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.savefig(output_folder + "/PieChart")

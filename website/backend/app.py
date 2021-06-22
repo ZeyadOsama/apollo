@@ -107,7 +107,7 @@ def downloaded_file_tags():
     if request.method == 'GET':
         print(request.args)
         if "Tags" in request.args:
-            return jsonify(extractor(RESULTS_DIR + RESULT_MP3), PLOTS_DIR)
+            return jsonify(extractor(RESULTS_DIR + RESULT_MP3,  PLOTS_DIR))
         else:
             path_to_file = "results/audio.wav"
             return send_file(path_to_file,

@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './custom.css'
 import Routes from './Routes'
 import {NavMenu} from './components/NavMenu'
 
-import { BrowserRouter as Router} from 'react-router-dom';
-import history from './components/history'
-
-
+import {BrowserRouter as Router} from 'react-router-dom';
 
 
 //export default class App extends Component {
@@ -34,9 +31,9 @@ export default function App() {
         <div>
             <Router>
                 <div>
-                <NavMenu />
-                    <Routes />
-                    
+                    <NavMenu/>
+                    <Routes/>
+
                 </div>
             </Router>
         </div>)

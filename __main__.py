@@ -1,7 +1,7 @@
 from builtins import input
 
-from apollo.engine.models.GenreClassification.tagger import top_tags
-from apollo.engine.models.GenreClassification.extractor import extractor
+from apollo.engine.models.genre_classification.tagger import top_tags
+from apollo.engine.models.genre_classification.extractor import extractor
 import numpy as np
 import matplotlib.pyplot as plt
 

@@ -27,7 +27,7 @@ rootDir = os.path.abspath(os.path.join(webDir, '..'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
 
-from apollo.engine.models.GenreClassification.tagger import *
+from apollo.engine.models.genre_classification.tagger import *
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')

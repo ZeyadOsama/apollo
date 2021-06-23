@@ -1,11 +1,12 @@
-﻿import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+﻿import React, {Component} from 'react';
+import {Container} from 'reactstrap';
 import './Home.css';
 import axios from "axios";
 
 
 export class MusicTagging extends Component {
     static displayName = MusicTagging.name;
+
     constructor(props) {
         super();
         this.state = {Tags: ""};
@@ -15,23 +16,20 @@ export class MusicTagging extends Component {
     }
 
 
-
-
-
     render() {
         return (
             <div className="">
-            <Container>
-                <h1>Music Tagging!</h1>
+                <Container>
+                    <h1>Music Tagging!</h1>
 
-                <audio src="http://localhost:5000/Original" controls className="audio-element1">
+                    <audio src="http://localhost:5000/Original" controls className="audio-element1">
 
-                </audio>
-                <hr />
-                <br />
-                <p> {this.state.Tags} </p>
+                    </audio>
+                    <hr/>
+                    <br/>
+                    <p> {this.state.Tags} </p>
 
-            </Container>
+                </Container>
             </div>
         );
     }

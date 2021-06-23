@@ -1,4 +1,4 @@
-﻿ h1 {
+﻿h1 {
     color: #ffffff;
     font-size: 55px;
     line-height: 79px;
@@ -7,17 +7,17 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-image:url(./images/background.jpg);
-    background-size:cover;
+    background-image: url(./images/background.jpg);
+    background-size: cover;
 
 
 }
 
- #exampleFormControlFile1 {
+#exampleFormControlFile1 {
     position: relative;
     transition: .5s ease;
     /* top: 191px;
@@ -62,7 +62,7 @@ body {
     left: 800px;
 }*/
 
- .btn-secondary{
+.btn-secondary {
 
     background-color: white;
     border-radius: 20px;
@@ -70,7 +70,7 @@ body {
 
 }
 
-.btn-outline-secondary{
+.btn-outline-secondary {
 
 
     /* border-radius: 20px; */
@@ -80,7 +80,7 @@ body {
 
 }
 
-audio{
+audio {
 
     border-radius: 10px;
 
@@ -97,7 +97,7 @@ audio{
 }
 
 
-#example1{
+#example1 {
 
     border: 1px solid;
     padding: 25px;
@@ -108,14 +108,16 @@ audio{
     background-color: #e0873371;
     width: 250px;
 }
-#example1:hover{
+
+#example1:hover {
 
     color: rgb(201, 39, 88);
     background-color: rgba(255, 255, 255, 0.226);
     border: 2px solid;
 
 }
-.meh{
+
+.meh {
     display: flex;
-  justify-content: center;
+    justify-content: center;
 }

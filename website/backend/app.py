@@ -104,10 +104,8 @@ def downloaded_file_five():
 @app.route('/MusicTagging', methods=['GET'])
 def downloaded_file_tags():
     if request.method == 'GET':
-        if "Tags" in request.args:
-            return jsonify(extractor(RESULTS_DIR + RESULT_MP3,  PLOTS_DIR))
-        else:
-            return "done!"
+        extractor(RESULTS_DIR + RESULT_MP3, PLOTS_DIR)
+        return send_file("plots/PieChart.png", mimetype='image/png')
 
 
 @app.route("/Original")

@@ -28,11 +28,9 @@ rootDir = os.path.abspath(os.path.join(webDir, '..'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
 
-<<<<<<< Updated upstream
+
 from apollo.engine.models.genre_classification.tagger import *
-=======
-from apollo.engine.models.GenreClassification.tagger import *
->>>>>>> Stashed changes
+
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')
@@ -89,7 +87,7 @@ def downloaded_file_two():
     return "done!"
 
 
-@app.route('/GetFourStems', methods=['GET'])
+@app.route('/GetFourStems')
 def downloaded_file_four():
     if os.path.exists("results/audio/"):
         shutil.rmtree("results/audio/")
@@ -97,7 +95,7 @@ def downloaded_file_four():
     return "done!"
 
 
-@app.route('/GetFiveStems', methods=['GET'])
+@app.route('/GetFiveStems')
 def downloaded_file_five():
     if os.path.exists("results/audio/"):
         shutil.rmtree("results/audio/")
@@ -105,9 +103,11 @@ def downloaded_file_five():
     return "done!"
 
 
-@app.route('/MusicTagging', methods=['GET'])
+@app.route('/MusicTags')
 def downloaded_file_tags():
     if request.method == 'GET':
+        if os.path.exists("plots/PieChart.png"):
+            os.remove("plots/PieChart.png")
         extractor(RESULTS_DIR + RESULT_MP3, PLOTS_DIR)
         return send_file("plots/PieChart.png", mimetype='image/png')
 
@@ -116,6 +116,96 @@ def downloaded_file_tags():
 def stream_original():
     def generate():
         with open("results/audio.wav", "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+
+    return Response(generate(), mimetype="audio/x-wav")
+
+
+@app.route("/Vocals")
+def stream_vocal():
+    def generate():
+        while True:
+            if os.path.exists("results/audio/vocals.wav"):
+                break
+        with open("results/audio/vocals.wav", "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+
+    return Response(generate(), mimetype="audio/x-wav")
+
+
+@app.route("/Instrumental")
+def stream_instruments():
+    def generate():
+        while True:
+            if os.path.exists("results/audio/accompaniment.wav"):
+                break
+        with open("results/audio/accompaniment.wav", "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+
+    return Response(generate(), mimetype="audio/x-wav")
+
+
+@app.route("/Bass")
+def stream_bass():
+    def generate():
+        while True:
+            if os.path.exists("results/audio/bass.wav"):
+                break
+        with open("results/audio/bass.wav", "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+
+    return Response(generate(), mimetype="audio/x-wav")
+
+
+@app.route("/Drums")
+def stream_drums():
+    def generate():
+        while True:
+            if os.path.exists("results/audio/drums.wav"):
+                break
+        with open("results/audio/drums.wav", "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+
+    return Response(generate(), mimetype="audio/x-wav")
+
+
+@app.route("/Piano")
+def stream_piano():
+    def generate():
+        while True:
+            if os.path.exists("results/audio/piano.wav"):
+                break
+        with open("results/audio/piano.wav", "rb") as fwav:
+            data = fwav.read(1024)
+            while data:
+                yield data
+                data = fwav.read(1024)
+
+    return Response(generate(), mimetype="audio/x-wav")
+
+
+@app.route("/Other")
+def stream_other():
+    def generate():
+        while True:
+            if os.path.exists("results/audio/other.wav"):
+                break
+        with open("results/audio/other.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data

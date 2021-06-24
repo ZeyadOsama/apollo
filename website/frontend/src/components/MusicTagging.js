@@ -9,9 +9,13 @@ export class MusicTagging extends Component {
     static displayName = MusicTagging.name;
 
     constructor(props) {
-        super();
+        super(props);
         this.state = {source: null};
-        axios.get('http://localhost:5000/MusicTagging',{responseType: 'arraybuffer'}).then(resp => {
+    }
+
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/MusicTags',{responseType: 'arraybuffer'}).then(resp => {
             const base64 = btoa(
           new Uint8Array(resp.data).reduce(
             (data, byte) => data + String.fromCharCode(byte),
@@ -28,9 +32,7 @@ export class MusicTagging extends Component {
             <div className="">
                 <Container>
                     <h1>Music Tagging!</h1>
-
-                    <audio src="http://localhost:5000/Original" controls className="audio-element1">
-
+                    <audio  src="http://localhost:5000/Original" controls className="audio-element1">
                     </audio>
                     <hr/>
                     <br/>

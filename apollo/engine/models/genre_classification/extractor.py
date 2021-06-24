@@ -4,6 +4,7 @@ import librosa
 import numpy as np
 import tensorflow as tf
 from matplotlib.figure import Figure
+from PIL import Image
 
 # disable eager mode for tf.v1 compatibility with tf.v2
 tf.compat.v1.disable_eager_execution()
@@ -252,11 +253,12 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     file_name = file_name.replace('.wav', '')
     file_name = file_name.replace('.wma', '')
     file_name = file_name.replace('./songs/', '')
+    file_name = file_name.replace('results/', '')
     print(file_name)
     # Plot Taggram for the labels
 
-    fig = Figure(figsize=(20, 15))
-    fig.suptitle(file_name + '  Taggram', fontsize=fontsize)
+    fig = Figure(figsize=(60, 15))
+    # fig.suptitle(file_name + '  Taggram', fontsize=fontsize)
     ax = fig.subplots()
     # x-axis title
     ax.set_xlabel('(seconds)', fontsize=fontsize)
@@ -271,7 +273,10 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     ax.set_xticklabels(x_label, fontsize=fontsize)
     # depict taggram
     ax.imshow(taggram.T, interpolation=None, aspect="auto")
-    fig.savefig(output_folder + "/" + file_name + " - Taggram")
+    fig.savefig(output_folder + "Taggram")
+    image = Image.open(output_folder + "Taggram.png")
+    image = image.resize((1600,400))
+    image.save(output_folder + "Taggram.png")
 
     # Plot Bar chart for the labels
 
@@ -279,8 +284,8 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
     ax = fig.subplots()
     # title
-    ax.title.set_text(file_name + ' Tags likelihood')
-    ax.title.set_fontsize(fontsize)
+    # ax.title.set_text(file_name + ' Tags likelihood')
+    # ax.title.set_fontsize(fontsize)
     # y-axis title
     ax.set_ylabel('(likelihood)', fontsize=fontsize)
     # y-axis
@@ -293,13 +298,16 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     ax.set_xticklabels(tags, rotation=90)
     # depict song-level tags likelihood
     ax.bar(pos, tags_likelihood_mean)
-    fig.savefig(output_folder + "/" + file_name + " - Tags_Likelihood")
+    fig.savefig(output_folder + "Tags_Likelihood")
+    image = Image.open(output_folder + "Tags_Likelihood.png")
+    image = image.resize((1000,800))
+    image.save(output_folder + "Tags_Likelihood.png")
 
     # Plot Pie Chart
 
     print(tags)
     fig = Figure(figsize=(10, 8))
-    fig.suptitle(file_name + '  Pie Chart', fontsize=fontsize)
+    # fig.suptitle(file_name + ' Pie Chart', fontsize=fontsize)
     fig.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
 
     tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
@@ -319,4 +327,7 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     ax1.margins(0.1, 0.1)
     # print(labels)
-    fig.savefig(output_folder + "/" + file_name + "- PieChart", transparent=True)
+    fig.savefig(output_folder + "PieChart", transparent=True)
+    image = Image.open(output_folder + "PieChart.png")
+    image = image.resize((1000,800))
+    image.save(output_folder + "PieChart.png")

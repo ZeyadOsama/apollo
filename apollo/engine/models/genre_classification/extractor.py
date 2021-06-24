@@ -16,7 +16,7 @@ def batch_data(audio_file, n_frames, overlap):
     '''For an efficient computation, we split the full music spectrograms in patches of length n_frames with overlap.
 
     INPUT
-    
+
     - file_name: path to the music file to tag.
     Data format: string.
     Example: './audio/TRWJAZW128F42760DD_test.mp3'
@@ -24,17 +24,17 @@ def batch_data(audio_file, n_frames, overlap):
     - n_frames: length (in frames) of the input spectrogram patches.
     Data format: integer.
     Example: 187
-        
+
     - overlap: ammount of overlap (in frames) of the input spectrogram patches.
     Note: Set it considering n_frames.
     Data format: integer.
     Example: 10
-    
+
     OUTPUT
-    
+
     - batch: batched audio representation. It returns spectrograms split in patches of length n_frames with overlap.
     Data format: 3D np.array (batch, time, frequency)
-    
+
     - audio_rep: raw audio representation (spectrogram).
     Data format: 2D np.array (time, frequency)
     '''
@@ -73,7 +73,7 @@ def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, inp
     - file_name: path to the music file to tag.
     Data format: string.
     Example: './audio/TRWJAZW128F42760DD_test.mp3'
-    
+
     - model: select a music audio tagging model.
     Data format: string.
     Options: 'MTT_musicnn', 'MTT_vgg', 'MSD_musicnn', 'MSD_musicnn_big' or 'MSD_vgg'.
@@ -88,26 +88,26 @@ def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, inp
     Observation: the vgg models do not allow for different input lengths. For this reason, the vgg models' input_length needs to be set to 3. However, musicnn models allow for different input lengths: see this jupyter notebook.
     Data format: floating point number.
     Example: 3.1
-    
+
     - input_overlap: ammount of overlap (in seconds) of the input spectrogram patches.
     Note: Set it considering the input_length.
     Data format: floating point number.
     Example: 1.0
-    
+
     - extract_features: set it True for extracting the intermediate representations of the model.
     Data format: boolean.
     Options: False (for NOT extracting the features), True (for extracting the features).
 
     OUTPUT
-    
+
     - taggram: expresses the temporal evolution of the tags likelihood.
     Data format: 2D np.ndarray (time, tags).
     Example: see our basic / advanced examples.
-    
+
     - tags: list of tags corresponding to the tag-indices of the taggram.
     Data format: list.
     Example: see our FAQs page for the complete tags list.
-    
+
     - features: if extract_features = True, it outputs a dictionary containing the activations of the different layers the selected model has.
     Data format: dictionary.
     Keys (musicnn models): ['timbral', 'temporal', 'cnn1', 'cnn2', 'cnn3', 'mean_pool', 'max_pool', 'penultimate']
@@ -237,7 +237,7 @@ def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, inp
     sess.close()
     print('done!')
 
-    plotter(input_length, taggram, labels, output_folder)
+    plotter(input_length, taggram, labels, output_folder, file_name)
 
     # if extract_features:
     #     return taggram, labels, features
@@ -245,16 +245,19 @@ def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, inp
     #     return taggram, labels
 
 
-def plotter(input_length, taggram, tags, output_folder):
+def plotter(input_length, taggram, tags, output_folder, file_name):
     fontsize = 12  # set figures font size
 
+    file_name = file_name.replace('.mp3', '')
+    file_name = file_name.replace('.wav', '')
+    file_name = file_name.replace('.wma', '')
+    file_name = file_name.replace('./songs/', '')
+    print(file_name)
     # Plot Taggram for the labels
 
-    fig = Figure(figsize=(60, 15))
+    fig = Figure(figsize=(20, 15))
+    fig.suptitle(file_name + '  Taggram', fontsize=fontsize)
     ax = fig.subplots()
-    # title
-    ax.title.set_text('Taggram')
-    ax.title.set_fontsize(fontsize)
     # x-axis title
     ax.set_xlabel('(seconds)', fontsize=fontsize)
     # y-axis
@@ -268,7 +271,7 @@ def plotter(input_length, taggram, tags, output_folder):
     ax.set_xticklabels(x_label, fontsize=fontsize)
     # depict taggram
     ax.imshow(taggram.T, interpolation=None, aspect="auto")
-    fig.savefig(output_folder + "/Taggram")
+    fig.savefig(output_folder + "/" + file_name + " - Taggram")
 
     # Plot Bar chart for the labels
 
@@ -276,7 +279,7 @@ def plotter(input_length, taggram, tags, output_folder):
     tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
     ax = fig.subplots()
     # title
-    ax.title.set_text('Tags likelihood (mean of the taggram)')
+    ax.title.set_text(file_name + ' Tags likelihood')
     ax.title.set_fontsize(fontsize)
     # y-axis title
     ax.set_ylabel('(likelihood)', fontsize=fontsize)
@@ -290,11 +293,15 @@ def plotter(input_length, taggram, tags, output_folder):
     ax.set_xticklabels(tags, rotation=90)
     # depict song-level tags likelihood
     ax.bar(pos, tags_likelihood_mean)
-    fig.savefig(output_folder + "/Tags_Likelihood")
+    fig.savefig(output_folder + "/" + file_name + " - Tags_Likelihood")
 
     # Plot Pie Chart
 
+    print(tags)
     fig = Figure(figsize=(10, 8))
+    fig.suptitle(file_name + '  Pie Chart', fontsize=fontsize)
+    fig.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
+
     tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
     indices = np.argsort(-tags_likelihood_mean)[:5]
     tags_likelihood_mean = tags_likelihood_mean[indices]
@@ -307,10 +314,9 @@ def plotter(input_length, taggram, tags, output_folder):
     explode[0] = 0.2
 
     ax1 = fig.subplots()
-    # ax1.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%',
-    #         shadow=True, startangle=90)
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-            shadow=True, startangle=90)
-
+            shadow=True, startangle=90, wedgeprops={})
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    fig.savefig(output_folder + "/PieChart")
+    ax1.margins(0.1, 0.1)
+    # print(labels)
+    fig.savefig(output_folder + "/" + file_name + "- PieChart", transparent=True)

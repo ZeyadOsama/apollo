@@ -5,12 +5,12 @@ from apollo.engine.models.genre_classification.extractor import extractor
 import numpy as np
 import matplotlib.pyplot as plt
 
-file_name = "Anthrax - Bring Tha Noize.mp3"
+file_name = "./songs/Frank Sinatra - My Way.mp3"
 output_folder = "website/backend/plots"
 
 
 # top_tags = top_tags(file_name, model, topN, input_length, input_overlap, print_tags, save_tags)
 
-taggram, tags, features = extractor(file_name, output_folder)
+extractor(file_name, output_folder)
 
 #

@@ -706,5 +706,7 @@ Temporary Items
 *.mp3
 *.mp4
 *.wav
+*.wma
+*.png
 
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains,pycharm,python.DS_Store

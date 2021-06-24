@@ -65,7 +65,9 @@ def uploaded_file():
             subprocess.call(['ffmpeg', '-i', path, dst])
 
         else:
-            f.save(RESULTS_DIR + secure_filename(f.filename))
+            secure = RESULTS_DIR + secure_filename(f.filename)
+            f.save(secure)
+            AudioSegment.from_wav(secure).export(RESULTS_DIR + RESULT_MP3, format="mp3")
 
     return "done!"
 

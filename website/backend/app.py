@@ -12,7 +12,7 @@ __license__ = "MIT License"
 
 
 import wave
-
+from io import BytesIO
 from flask import Flask, render_template, request, redirect, send_file, jsonify, Response
 from flask_cors import CORS, cross_origin
 from pydub import AudioSegment
@@ -28,7 +28,11 @@ rootDir = os.path.abspath(os.path.join(webDir, '..'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
 
+<<<<<<< Updated upstream
 from apollo.engine.models.genre_classification.tagger import *
+=======
+from apollo.engine.models.GenreClassification.tagger import *
+>>>>>>> Stashed changes
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')

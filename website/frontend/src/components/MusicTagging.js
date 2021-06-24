@@ -2,6 +2,7 @@
 import {Container} from 'reactstrap';
 import './Home.css';
 import axios from "axios";
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 export class MusicTagging extends Component {
@@ -9,9 +10,15 @@ export class MusicTagging extends Component {
 
     constructor(props) {
         super();
-        this.state = {Tags: ""};
-        axios.get('http://localhost:5000/MusicTagging', {params: {"Tags": 1}}).then(resp => {
-            this.setState({Tags: resp.data});
+        this.state = {source: null};
+        axios.get('http://localhost:5000/MusicTagging',{responseType: 'arraybuffer'}).then(resp => {
+            const base64 = btoa(
+          new Uint8Array(resp.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            '',
+          ),
+        );
+        this.setState({ source: "data:;base64," + base64 });
         });
     }
 
@@ -27,7 +34,7 @@ export class MusicTagging extends Component {
                     </audio>
                     <hr/>
                     <br/>
-                    <p> {this.state.Tags} </p>
+                    <Jumbotron> <img src={this.state.source} /> </Jumbotron>
 
                 </Container>
             </div>

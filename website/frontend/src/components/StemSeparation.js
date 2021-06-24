@@ -1,9 +1,32 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import './Home.css';
+import history from './history';
+import axios from 'axios';
 
 export class StemSeparation extends Component {
     static displayName = StemSeparation.name;
+
+    TwoStems = () => {
+        axios.get("http://localhost:5000/GetTwoStems", null).then(resp => {
+            console.log(resp);
+        })
+        history.push("/TwoStems")
+    }
+
+    FourStems = () => {
+        axios.get("http://localhost:5000/GetFourStems", null).then(resp => {
+            console.log(resp);
+        })
+        history.push("/FourStems")
+    }
+
+    FiveStems = () => {
+        axios.get("http://localhost:5000/GetFiveStems", null).then(resp => {
+            console.log(resp);
+        })
+        history.push("/FiveStems")
+    }
 
     render() {
         return (
@@ -23,20 +46,22 @@ export class StemSeparation extends Component {
                                         <div class="row">
                                             <div class="meh">
 
-                                                <div class="col-md-4"><a id="example1" href="/TwoStems"
-                                                                         class="btn btn-outline-secondary btn-lg">2
-                                                    Stems Separation
-                                                    <h5>Vocal & Instumentals</h5></a></div>
+                                                <div class="col-md-4">
+                                                    <button id="example1" class="btn btn-outline-secondary btn-lg" onClick={this.TwoStems}>
+                                                    2 Stems Separation
+                                                    <h5>Vocal & Instrumentals</h5></button></div>
 
-                                                <div class="col-md-4"><a id="example1" href="/FourStems"
-                                                                         class="btn btn-outline-secondary btn-lg">4
+                                                <div class="col-md-4">
+                                                    <button id="example1" className="btn btn-outline-secondary btn-lg"
+                                                            onClick={this.FourStems}>4
                                                     Stems Separation
-                                                    <h5>Vocal, Bass, Drums<br></br> & Instumentals</h5></a></div>
+                                                    <h5>Vocal, Bass, Drums<br></br> & Instrumentals</h5></button></div>
 
-                                                <div class="col-md-4"><a id="example1" href="/FiveStems"
-                                                                         class="btn btn-outline-secondary btn-lg">5
+                                                <div class="col-md-4">
+                                                    <button id="example1" className="btn btn-outline-secondary btn-lg"
+                                                            onClick={this.FiveStems}>5
                                                     Stems Separation
-                                                    <h5>Vocal, Bass, Drums, Piano<br></br> & Instumentals</h5></a></div>
+                                                    <h5>Vocal, Bass, Drums, Piano<br></br> & Instrumentals</h5></button></div>
 
                                             </div>
                                         </div>

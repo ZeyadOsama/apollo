@@ -1,5 +1,4 @@
 # Importing required libraries.
-import os
 
 # !/usr/bin/env python
 # coding: utf8
@@ -11,7 +10,7 @@ app.py:
 __author__ = "Omar Marzouk"
 __license__ = "MIT License"
 
-import subprocess
+
 import wave
 
 from flask import Flask, render_template, request, redirect, send_file, jsonify, Response
@@ -20,6 +19,8 @@ from pydub import AudioSegment
 from pydub.playback import play
 from werkzeug.utils import secure_filename
 import os, sys
+import subprocess
+import shutil
 
 currDir = os.path.dirname(os.path.realpath(__file__))
 webDir = os.path.abspath(os.path.join(currDir, '..'))
@@ -49,7 +50,8 @@ def uploaded_file():
         print(f.filename)
         if ".mp3" in f.filename:
             # convert mp3 to wav
-            os.remove(dst)
+            if os.path.exists(dst):
+                os.remove(dst)
             secure = RESULTS_DIR + secure_filename(f.filename)
             f.save(secure)
             os.rename(secure, RESULTS_DIR + RESULT_MP3)
@@ -75,44 +77,37 @@ def read_wav_file(filename):
     return dur
 
 
-@app.route('/TwoStems', methods=['GET'])
+@app.route('/GetTwoStems')
 def downloaded_file_two():
-    if request.method == 'GET':
-        path_to_file = "results/audio.wav"
-        return send_file(path_to_file,
-                         mimetype="audio/wav", as_attachment=True,
-                         attachment_filename="audio.wav")
+    if os.path.exists("results/audio/"):
+        shutil.rmtree("results/audio/")
+    os.system("spleeter separate -i results/audio.wav -p spleeter:2stems -B tensorflow -o results/")
+    return "done!"
 
 
-@app.route('/FourStems', methods=['GET'])
+@app.route('/GetFourStems', methods=['GET'])
 def downloaded_file_four():
-    if request.method == 'GET':
-        path_to_file = "results/audio.wav"
-        return send_file(path_to_file,
-                         mimetype="audio/wav", as_attachment=True,
-                         attachment_filename="audio.wav")
+    if os.path.exists("results/audio/"):
+        shutil.rmtree("results/audio/")
+    os.system("spleeter separate -i results/audio.wav -p spleeter:4stems -B tensorflow -o results/")
+    return "done!"
 
 
-@app.route('/FiveStems', methods=['GET'])
+@app.route('/GetFiveStems', methods=['GET'])
 def downloaded_file_five():
-    if request.method == 'GET':
-        path_to_file = "results/audio.wav"
-        return send_file(path_to_file,
-                         mimetype="audio/wav", as_attachment=True,
-                         attachment_filename="audio.wav")
+    if os.path.exists("results/audio/"):
+        shutil.rmtree("results/audio/")
+    os.system("spleeter separate -i results/audio.wav -p spleeter:5stems -B tensorflow -o results/")
+    return "done!"
 
 
 @app.route('/MusicTagging', methods=['GET'])
 def downloaded_file_tags():
     if request.method == 'GET':
-        print(request.args)
         if "Tags" in request.args:
             return jsonify(extractor(RESULTS_DIR + RESULT_MP3,  PLOTS_DIR))
         else:
-            path_to_file = "results/audio.wav"
-            return send_file(path_to_file,
-                             mimetype="audio/wav", as_attachment=True,
-                             attachment_filename="audio.wav")
+            return "done!"
 
 
 @app.route("/Original")

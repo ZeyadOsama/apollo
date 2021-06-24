@@ -42,6 +42,9 @@ def batch_data(audio_file, n_frames, overlap):
 
     # compute the log-mel spectrogram with librosa
     audio, sr = librosa.load(audio_file, sr=config.SR)
+    # is_mono = librosa.util.valid_audio(audio)
+    # if is_mono:
+    #     audio = np.asfortranarray(np.array([audio, audio]))
     audio_rep = librosa.feature.melspectrogram(y=audio,
                                                sr=sr,
                                                hop_length=config.FFT_HOP,
@@ -274,14 +277,13 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     # depict taggram
     ax.imshow(taggram.T, interpolation=None, aspect="auto")
     fig.savefig(output_folder + "Taggram")
-    image = Image.open(output_folder + "Taggram.png")
-    image = image.resize((1600,400))
-    image.save(output_folder + "Taggram.png")
 
     # Plot Bar chart for the labels
 
     fig = Figure(figsize=(10, 8))
     tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
+    tags_likelihood_mean_sum = sum(tags_likelihood_mean)
+    tags_likelihood_mean = tags_likelihood_mean / tags_likelihood_mean_sum
     ax = fig.subplots()
     # title
     # ax.title.set_text(file_name + ' Tags likelihood')
@@ -299,9 +301,6 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     # depict song-level tags likelihood
     ax.bar(pos, tags_likelihood_mean)
     fig.savefig(output_folder + "Tags_Likelihood")
-    image = Image.open(output_folder + "Tags_Likelihood.png")
-    image = image.resize((1000,800))
-    image.save(output_folder + "Tags_Likelihood.png")
 
     # Plot Pie Chart
 
@@ -311,16 +310,26 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     fig.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
 
     tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
-    indices = np.argsort(-tags_likelihood_mean)[:5]
+    indices = np.where(tags_likelihood_mean >= 0.1)[0]
+    tags_likelihood_mean = tags_likelihood_mean[indices]
+    tags = list(np.array(tags)[indices.astype(int)])
+    indices = np.argsort(-tags_likelihood_mean)
     tags_likelihood_mean = tags_likelihood_mean[indices]
     tags = list(np.array(tags)[indices.astype(int)])
 
-    labels = tags + ["others"]
-    sizes = np.append(tags_likelihood_mean, 1.0 - sum(tags_likelihood_mean))
+    tags_likelihood_mean = tags_likelihood_mean / sum(tags_likelihood_mean)
+
+    print(tags_likelihood_mean)
+    print(tags)
+    labels = tags
+    print(sum(tags_likelihood_mean))
+    print(1.0 - sum(tags_likelihood_mean))
+    # sizes = np.append(tags_likelihood_mean, 1.0 - sum(tags_likelihood_mean))
     # colors = ["yellow", "grey", "orange", "hotpink", "red", "blue"]
     explode = [0] * len(labels)
     explode[0] = 0.2
 
+    sizes = tags_likelihood_mean
     ax1 = fig.subplots()
     ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
             shadow=True, startangle=90, wedgeprops={})
@@ -328,6 +337,3 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     ax1.margins(0.1, 0.1)
     # print(labels)
     fig.savefig(output_folder + "PieChart", transparent=True)
-    image = Image.open(output_folder + "PieChart.png")
-    image = image.resize((1000,800))
-    image.save(output_folder + "PieChart.png")

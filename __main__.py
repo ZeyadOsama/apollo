@@ -5,7 +5,7 @@ from apollo.engine.models.genre_classification.extractor import extractor
 import numpy as np
 import matplotlib.pyplot as plt
 
-file_name = "./songs/Frank Sinatra - My Way.mp3"
+file_name = "Nirvana - Smells Like Teen Spirit.mp3"
 output_folder = "website/backend/plots"
 
 

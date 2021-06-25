@@ -4,13 +4,12 @@ import librosa
 import numpy as np
 import tensorflow as tf
 from matplotlib.figure import Figure
-from PIL import Image
+
+from apollo.engine.models.genre_classification import configuration as config
+from apollo.engine.models.genre_classification import models
 
 # disable eager mode for tf.v1 compatibility with tf.v2
 tf.compat.v1.disable_eager_execution()
-
-from apollo.engine.models.genre_classification import models
-from apollo.engine.models.genre_classification import configuration as config
 
 
 def batch_data(audio_file, n_frames, overlap):

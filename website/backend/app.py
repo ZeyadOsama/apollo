@@ -10,17 +10,16 @@ app.py:
 __author__ = "Omar Marzouk"
 __license__ = "MIT License"
 
-
-import wave
-from io import BytesIO
-from flask import Flask, render_template, request, redirect, send_file, jsonify, Response
-from flask_cors import CORS, cross_origin
-from pydub import AudioSegment
-from pydub.playback import play
-from werkzeug.utils import secure_filename
-import os, sys
-import subprocess
+import os
 import shutil
+import subprocess
+import sys
+import wave
+
+from flask import Flask, request, send_file, Response
+from flask_cors import CORS
+from pydub import AudioSegment
+from werkzeug.utils import secure_filename
 
 currDir = os.path.dirname(os.path.realpath(__file__))
 webDir = os.path.abspath(os.path.join(currDir, '..'))
@@ -28,9 +27,7 @@ rootDir = os.path.abspath(os.path.join(webDir, '..'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
 
-
 from apollo.engine.models.genre_classification.tagger import *
-
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')

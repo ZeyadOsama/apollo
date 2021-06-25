@@ -48,9 +48,9 @@ export class TwoStems extends Component {
                                 </div>
                                 <div class="col-9">
 
-                                <audio src="http://localhost:5000/Vocals" controls className="position-relative">
+                                    <audio src="http://localhost:5000/Vocals" controls className="position-relative">
 
-                                </audio>
+                                    </audio>
                                 </div>
                             </div>
 
@@ -62,9 +62,10 @@ export class TwoStems extends Component {
                                     <h5 className="">Instrumental</h5>
                                 </div>
                                 <div class="col-9">
-                                <audio src="http://localhost:5000/Instrumental" controls className="position-relative">
+                                    <audio src="http://localhost:5000/Instrumental" controls
+                                           className="position-relative">
 
-                                </audio>
+                                    </audio>
                                 </div>
                             </div>
 

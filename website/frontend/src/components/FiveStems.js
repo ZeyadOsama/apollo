@@ -40,9 +40,9 @@ export class FiveStems extends Component {
                                     <h5 className="">Vocal</h5>
                                 </div>
                                 <div class="col-9">
-                                <audio src="http://localhost:5000/Vocals" controls className="position-relative">
+                                    <audio src="http://localhost:5000/Vocals" controls className="position-relative">
 
-                                </audio>
+                                    </audio>
 
                                 </div>
                             </div>
@@ -55,9 +55,9 @@ export class FiveStems extends Component {
                                     <h5 className="">Bass</h5>
                                 </div>
                                 <div class="col-9">
-                                <audio src="http://localhost:5000/Bass" controls className="position-relative">
+                                    <audio src="http://localhost:5000/Bass" controls className="position-relative">
 
-                                </audio>
+                                    </audio>
                                 </div>
                             </div>
 
@@ -69,9 +69,9 @@ export class FiveStems extends Component {
                                     <h5 className="">Drums</h5>
                                 </div>
                                 <div class="col-9">
-                                <audio src="http://localhost:5000/Drums" controls className="position-relative">
+                                    <audio src="http://localhost:5000/Drums" controls className="position-relative">
 
-                                </audio>
+                                    </audio>
 
                                 </div>
                             </div>
@@ -84,9 +84,9 @@ export class FiveStems extends Component {
                                     <h5 className="">Piano</h5>
                                 </div>
                                 <div class="col-9">
-                                <audio src="http://localhost:5000/Piano" controls className="position-relative">
+                                    <audio src="http://localhost:5000/Piano" controls className="position-relative">
 
-                                </audio>
+                                    </audio>
                                 </div>
                             </div>
 
@@ -98,9 +98,9 @@ export class FiveStems extends Component {
                                     <h5 className="">Instrumentals</h5>
                                 </div>
                                 <div class="col-9">
-                                <audio src="http://localhost:5000/Other" controls className="position-relative">
+                                    <audio src="http://localhost:5000/Other" controls className="position-relative">
 
-                                </audio>
+                                    </audio>
                                 </div>
                             </div>
 

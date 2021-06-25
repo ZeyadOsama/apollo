@@ -15,14 +15,14 @@ export class MusicTagging extends Component {
 
 
     componentDidMount() {
-        axios.get('http://localhost:5000/MusicTags',{responseType: 'arraybuffer'}).then(resp => {
+        axios.get('http://localhost:5000/MusicTags', {responseType: 'arraybuffer'}).then(resp => {
             const base64 = btoa(
-          new Uint8Array(resp.data).reduce(
-            (data, byte) => data + String.fromCharCode(byte),
-            '',
-          ),
-        );
-        this.setState({ source: "data:;base64," + base64 });
+                new Uint8Array(resp.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    '',
+                ),
+            );
+            this.setState({source: "data:;base64," + base64});
         });
     }
 
@@ -32,11 +32,11 @@ export class MusicTagging extends Component {
             <div className="">
                 <Container>
                     <h1>Music Tagging!</h1>
-                    <audio  src="http://localhost:5000/Original" controls className="audio-element1">
+                    <audio src="http://localhost:5000/Original" controls className="audio-element1">
                     </audio>
                     <hr/>
                     <br/>
-                    <Jumbotron> <img src={this.state.source} /> </Jumbotron>
+                    <Jumbotron> <img src={this.state.source}/> </Jumbotron>
 
                 </Container>
             </div>

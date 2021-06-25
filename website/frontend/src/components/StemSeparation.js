@@ -47,21 +47,26 @@ export class StemSeparation extends Component {
                                             <div class="meh">
 
                                                 <div class="col-md-4">
-                                                    <button id="example1" class="btn btn-outline-secondary btn-lg" onClick={this.TwoStems}>
-                                                    2 Stems Separation
-                                                    <h5>Vocal & Instrumentals</h5></button></div>
+                                                    <button id="example1" class="btn btn-outline-secondary btn-lg"
+                                                            onClick={this.TwoStems}>
+                                                        2 Stems Separation
+                                                        <h5>Vocal & Instrumentals</h5></button>
+                                                </div>
 
                                                 <div class="col-md-4">
                                                     <button id="example1" className="btn btn-outline-secondary btn-lg"
                                                             onClick={this.FourStems}>4
-                                                    Stems Separation
-                                                    <h5>Vocal, Bass, Drums<br></br> & Instrumentals</h5></button></div>
+                                                        Stems Separation
+                                                        <h5>Vocal, Bass, Drums<br></br> & Instrumentals</h5></button>
+                                                </div>
 
                                                 <div class="col-md-4">
                                                     <button id="example1" className="btn btn-outline-secondary btn-lg"
                                                             onClick={this.FiveStems}>5
-                                                    Stems Separation
-                                                    <h5>Vocal, Bass, Drums, Piano<br></br> & Instrumentals</h5></button></div>
+                                                        Stems Separation
+                                                        <h5>Vocal, Bass, Drums, Piano<br></br> & Instrumentals</h5>
+                                                    </button>
+                                                </div>
 
                                             </div>
                                         </div>

@@ -4,7 +4,10 @@ import './Home.css';
 import history from './history';
 import axios from 'axios';
 
-const url = process.env.APP_URL || 'http://localhost:5000/' ;
+const server_host = process.env.YOUR_HOST || '0.0.0.0';
+const server_port = process.env.YOUR_PORT || process.env.PORT || 5000;
+const url = server_host + server_port;
+
 export class StemSeparation extends Component {
     static displayName = StemSeparation.name;
 

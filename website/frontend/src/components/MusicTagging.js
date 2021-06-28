@@ -4,6 +4,8 @@ import './Home.css';
 import axios from "axios";
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
+const server_host = process.env.YOUR_HOST || '0.0.0.0';
+const server_port = process.env.YOUR_PORT || process.env.PORT || 5000;
 
 export class MusicTagging extends Component {
     static displayName = MusicTagging.name;
@@ -11,7 +13,7 @@ export class MusicTagging extends Component {
     constructor(props) {
         super(props);
         this.state = {source: null};
-        this.url = process.env.APP_URL || 'http://localhost:5000/' ;
+        this.url = server_host + server_port;
     }
 
 

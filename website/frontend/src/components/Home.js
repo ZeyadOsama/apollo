@@ -4,7 +4,6 @@ import {Container} from 'react-bootstrap';
 import history from './history';
 import axios from 'axios';
 
-const url = process.env.APP_URL || 'http://localhost:5000/';
 
 export class Home extends Component {
     state = {
@@ -20,7 +19,7 @@ export class Home extends Component {
         const formData = new FormData();
         formData.append("myFile", this.state.selectedFile, this.state.selectedFile.name);
         console.log(this.state.selectedFile.name);
-        axios.post(url, formData);
+        axios.post('http://localhost:5000/', formData);
         history.push("/Tools");
     }
 

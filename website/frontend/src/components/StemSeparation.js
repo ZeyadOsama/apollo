@@ -4,25 +4,26 @@ import './Home.css';
 import history from './history';
 import axios from 'axios';
 
+const url = process.env.APP_URL || 'http://localhost:5000/' ;
 export class StemSeparation extends Component {
     static displayName = StemSeparation.name;
 
     TwoStems = () => {
-        axios.get("http://localhost:5000/GetTwoStems", null).then(resp => {
+        axios.get(url + "GetTwoStems", null).then(resp => {
             console.log(resp);
         })
         history.push("/TwoStems")
     }
 
     FourStems = () => {
-        axios.get("http://localhost:5000/GetFourStems", null).then(resp => {
+        axios.get(url + "GetFourStems", null).then(resp => {
             console.log(resp);
         })
         history.push("/FourStems")
     }
 
     FiveStems = () => {
-        axios.get("http://localhost:5000/GetFiveStems", null).then(resp => {
+        axios.get(url + "GetFiveStems", null).then(resp => {
             console.log(resp);
         })
         history.push("/FiveStems")

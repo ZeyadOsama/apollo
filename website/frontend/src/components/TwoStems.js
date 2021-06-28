@@ -4,13 +4,13 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 
 import './Home.css';
 
-
+const url = process.env.APP_URL || 'http://localhost:5000/' ;
 export class TwoStems extends Component {
     static displayName = TwoStems.name;
     state = {
         original: null,
         vocal: null,
-        instrumental: null
+        instrumental: null,
     }
 
 
@@ -29,7 +29,7 @@ export class TwoStems extends Component {
                                 <h5 className="">Original Audio File</h5>
                             </div>
                             <div class="col-9">
-                                <audio src="http://localhost:5000/Original" controls className="position-relative">
+                                <audio src={url + "Original"} controls className="position-relative">
 
                                 </audio>
 
@@ -48,7 +48,7 @@ export class TwoStems extends Component {
                                 </div>
                                 <div class="col-9">
 
-                                    <audio src="http://localhost:5000/Vocals" controls className="position-relative">
+                                    <audio src={url + "Vocals"} controls className="position-relative">
 
                                     </audio>
                                 </div>
@@ -62,7 +62,7 @@ export class TwoStems extends Component {
                                     <h5 className="">Instrumental</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src="http://localhost:5000/Instrumental" controls
+                                    <audio src={url + "Instrumental"} controls
                                            className="position-relative">
 
                                     </audio>

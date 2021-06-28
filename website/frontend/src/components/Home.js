@@ -19,7 +19,8 @@ export class Home extends Component {
         const formData = new FormData();
         formData.append("myFile", this.state.selectedFile, this.state.selectedFile.name);
         console.log(this.state.selectedFile.name);
-        axios.post('http://localhost:5000/', formData);
+        const url = process.env.APP_URL || 'http://localhost:5000/' ;
+        axios.post(url, formData);
         history.push("/Tools");
     }
 

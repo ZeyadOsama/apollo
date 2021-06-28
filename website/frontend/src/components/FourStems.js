@@ -3,7 +3,7 @@ import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import './Home.css';
 
-
+const url = process.env.APP_URL || 'http://localhost:5000/' ;
 export class FourStems extends Component {
     static displayName = FourStems.name;
 
@@ -23,7 +23,7 @@ export class FourStems extends Component {
                                 <h5 className="">Original Audio File</h5>
                             </div>
                             <div class="col-9">
-                                <audio src="http://localhost:5000/Original" controls className="position-relative">
+                                <audio src={url + "Original"} controls className="position-relative">
 
                                 </audio>
                             </div>
@@ -40,7 +40,7 @@ export class FourStems extends Component {
                                     <h5 className="">Vocal</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src="http://localhost:5000/Vocals" controls className="position-relative">
+                                    <audio src={url + "Vocals"} controls className="position-relative">
 
                                     </audio>
                                 </div>
@@ -54,7 +54,7 @@ export class FourStems extends Component {
                                     <h5 className="">Bass</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src="http://localhost:5000/Bass" controls className="position-relative">
+                                    <audio src={url + "Bass"} controls className="position-relative">
 
                                     </audio>
                                 </div>
@@ -68,7 +68,7 @@ export class FourStems extends Component {
                                     <h5 className="">Drums</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src="http://localhost:5000/Drums" controls className="position-relative">
+                                    <audio src={url + "Drums"} controls className="position-relative">
 
                                     </audio>
                                 </div>
@@ -82,7 +82,7 @@ export class FourStems extends Component {
                                     <h5 className="">Instrumentals</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src="http://localhost:5000/Other" controls className="position-relative">
+                                    <audio src={url + "Other"} controls className="position-relative">
 
                                     </audio>
                                 </div>

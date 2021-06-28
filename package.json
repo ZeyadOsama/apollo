@@ -44,7 +44,7 @@
       "last 1 safari version"
     ]
   },
-  "main": "index.js",
+  "main": "website/frontend/index.js",
   "devDependencies": {},
   "author": "",
   "license": "ISC",

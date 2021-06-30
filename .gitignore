@@ -708,5 +708,6 @@ Temporary Items
 *.wav
 *.wma
 *.png
+**pretrained_models/
 
 # End of https://www.toptal.com/developers/gitignore/api/jetbrains,pycharm,python.DS_Store

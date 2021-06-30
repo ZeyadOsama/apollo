@@ -1,6 +1,5 @@
 ﻿ul {
     list-style-type: none;
-    margin: 20;
     padding: 0;
     overflow: hidden;
     background-color: #333;
@@ -25,6 +24,7 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: rgb(124, 123, 123);
+    color: white;
     text-decoration: none;
 }
 

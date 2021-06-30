@@ -19,47 +19,50 @@ export class Home extends Component {
         const formData = new FormData();
         formData.append("myFile", this.state.selectedFile, this.state.selectedFile.name);
         console.log(this.state.selectedFile.name);
-        const url = process.env.APP_URL || 'http://localhost:5000/' ;
+        const url = process.env.APP_URL || 'http://localhost:5000/';
         axios.post(url, formData);
         history.push("/Tools");
     }
 
     render() {
         return (
-            <div className="blekh">
+            <Container>
+                <h1>Please Attach Your Audio File</h1>
 
-                <Container>
+                <br/>
 
+                <div class="row">
+                    <form class="md-form">
 
-                    <h1>Please attach your audio file</h1>
-
-                    <div class="row">
-                        <form class="md-form">
-
-
-                            <div class="file-field">
-                                <div class="btn btn-secondary btn-lg float-left">
-
-                                    <input name='file' type="file" onChange={this.onFileChange}/>
-                                </div>
-
-                                <div class="file-path-wrapper">
-                                    <br/>
-                                    {/* <input class="file-path validate" type="text" placeholder="Upload your file" /> */}
+                        <div className="container">
+                            <div className="row">
+                                <div className="col text-center">
+                                    <div className="file-field">
+                                        <div className="btn btn-outline-light">
+                                            <input name='file' type="file" onChange={this.onFileChange}/>
+                                        </div>
+                                        <div className="file-path-wrapper"/>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
+                        <br/>
 
-                            <button onClick={this.onFileUpload} class="btn btn-secondary btn-lg"> Done</button>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col text-center">
+                                    <button className="btn btn-outline-light" onClick={this.onFileUpload}>
+                                        Done
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-                        </form>
-                    </div>
+                    </form>
+                </div>
 
-
-                </Container>
-            </div>
-
-
+            </Container>
         );
 
     }

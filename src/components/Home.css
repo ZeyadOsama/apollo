@@ -1,4 +1,8 @@
-﻿h1 {
+﻿* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
     color: #ffffff;
     font-size: 55px;
     line-height: 79px;
@@ -7,23 +11,22 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-image: url(images/background.jpg);
-    background-size: cover;
-
-
+    background: rgba(255, 255, 255, 0) linear-gradient(to bottom right, #49a09d, #5f2c82) no-repeat;
+    background-size: 100% 100vh;
 }
 
 #exampleFormControlFile1 {
-    position: relative;
-    transition: .5s ease;
-    /* top: 191px;
-    left: 420px;
-    right: -420px;
-    bottom: -191px; */
+    text-align: center;
+    padding: 25px;
+    width: 25rem;
+    height: 10rem;
+    margin: 100px 25px 25px 25px;
+    border: 1px solid;
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 /* .btn-light {
@@ -96,28 +99,26 @@ audio {
 
 }
 
-
-#example1 {
-
-    border: 1px solid;
+#clickable {
+    text-align: center;
     padding: 25px;
-    width: 250px;
-    height: 150px;
-    margin: 25px;
+    width: 25rem;
+    height: 10rem;
+    margin: 100px 25px 25px 25px;
+    border: 1px solid;
     color: white;
-    background-color: #e0873371;
-    width: 250px;
+    background-color: rgba(255, 255, 255, 0);
 }
 
-#example1:hover {
-
-    color: rgb(201, 39, 88);
-    background-color: rgba(255, 255, 255, 0.226);
+#clickable:hover {
+    font-weight: bolder;
+    color: #552572;
     border: 2px solid;
-
+    background-color: rgba(255, 255, 255, 0.226);
 }
 
 .meh {
     display: flex;
     justify-content: center;
 }
+

@@ -3,7 +3,8 @@ import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import './Home.css';
 
-const url = process.env.APP_URL || 'http://localhost:5000/' ;
+const url = process.env.APP_URL || 'http://localhost:5000/';
+
 export class FiveStems extends Component {
     static displayName = FiveStems.name;
 

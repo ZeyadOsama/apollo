@@ -9,26 +9,16 @@ export class Tools extends Component {
         return (
             <div className="">
                 <Container>
-                    <h1>Tools Page!</h1>
-
-                    <br/>
-
-                    {/*}<audio controls class="audio-element1">
-                    <source src="myAudio.mp3" type="audio/mp3" />
-                    </audio> */}
-                    <br/>
-
-                    <hr/>
-                    <br/>
-                    <br/>
+                    <h1>Tools Page</h1>
                     <div class="text-center">
-                        <div class="meh">
-                            <a id="example1" class="btn btn-outline-secondary btn-lg" href="/StemSeparation">Stem
-                                Separation
-                                <h5>Separating channels into 2,4 or <br></br> 5 stems.</h5></a>
-                            <a id="example1" class="btn btn-outline-secondary btn-lg" href="/MusicTagging">Music Tagging
-                                <h5>Get your audio tags</h5></a>
-                        </div>
+                        <a id="clickable" class="btn btn-outline-secondary btn-lg" href="/StemSeparation">
+                            <h5>Stem Separation</h5>
+                            <h6>Separating Channels Into Two, Four or Five stems.</h6>
+                        </a>
+                        <a id="clickable" class="btn btn-outline-secondary btn-lg" href="/MusicTagging">
+                            <h5>Music Tagging</h5>
+                            <h6>Get Your Audio Tags</h6>
+                        </a>
                     </div>
                 </Container>
             </div>

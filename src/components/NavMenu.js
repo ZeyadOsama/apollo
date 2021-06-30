@@ -6,20 +6,14 @@ import './NavMenu.css';
 export class NavMenu extends Component {
     static displayName = NavMenu.name;
 
-
     render() {
         return (
-
-
             <ul>
-                <li><a class="navbar-brand" href="/">Apollo</a></li>
+                {/*<li><a class="navbar-brand" href="/">Apollo</a></li>*/}
                 <li><a href="/">Home</a></li>
                 <li><a href="/howitworks">How It Works?</a></li>
                 <li><a href="/faq">FAQ</a></li>
-
             </ul>
-
-
         );
     }
 }

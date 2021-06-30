@@ -11,7 +11,7 @@ export class MusicTagging extends Component {
     constructor(props) {
         super(props);
         this.state = {source: null};
-        this.url = process.env.APP_URL || 'http://localhost:5000/' ;
+        this.url = process.env.APP_URL || 'http://localhost:5000/';
     }
 
 

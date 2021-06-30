@@ -1,7 +1,7 @@
 {
   "name": "apollo",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "engines": {
     "npm": "7.0"
   },
@@ -23,9 +23,12 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "npm start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "main": "website/frontend/index.js",
+  "main": "website/frontend/index.jsx",
   "devDependencies": {},
   "author": "",
   "license": "MIT",

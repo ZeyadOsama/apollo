@@ -1,7 +1,7 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import './Home.css';
+import '../../css/styles.css';
 
 const url = process.env.APP_URL || 'http://localhost:5000/';
 
@@ -11,8 +11,9 @@ export class FourStems extends Component {
 
     render() {
         return (
-            <div className="">
-                <Container>
+            <Container>
+                <div className="animation sequence fadeInBottom-narrow">
+
                     <h1>Four Stems Below</h1>
                     <hr/>
                     <br/>
@@ -94,11 +95,8 @@ export class FourStems extends Component {
 
                     </div>
 
-
-                </Container>
-            </div>
-
-
+                </div>
+            </Container>
         );
     }
 }

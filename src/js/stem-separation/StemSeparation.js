@@ -1,7 +1,7 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
-import './Home.css';
-import history from './history';
+import '../../css/styles.css';
+import history from '../base/History';
 import axios from 'axios';
 
 const url = process.env.APP_URL || 'http://localhost:5000/';

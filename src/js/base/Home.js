@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import './Home.css';
 import {Container} from 'react-bootstrap';
-import history from './history';
+import history from './History';
 import axios from 'axios';
 
+import '../../css/styles.css';
+import '../../css/animation.css'
 
 export class Home extends Component {
     state = {
@@ -27,11 +28,13 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-                <h1>Please Attach Your Audio File</h1>
+                <h1 class="animation sequence fadeInBottom-narrow">
+                    Attach Your Audio File Below
+                </h1>
 
                 <br/>
 
-                <div class="row">
+                <div class="row animation sequence fadeInBottom-narrow">
                     <form class="md-form">
 
                         <div className="container">
@@ -41,7 +44,6 @@ export class Home extends Component {
                                         <div className="btn btn-outline-light">
                                             <input name='file' type="file" onChange={this.onFileChange}/>
                                         </div>
-                                        <div className="file-path-wrapper"/>
                                     </div>
                                 </div>
                             </div>
@@ -52,8 +54,9 @@ export class Home extends Component {
                         <div className="container">
                             <div className="row">
                                 <div className="col text-center">
-                                    <button className="btn btn-outline-light" onClick={this.onFileUpload}>
-                                        Done
+                                    <button className="btn btn-outline-light text-uppercase"
+                                            onClick={this.onFileUpload}>
+                                        Upload
                                     </button>
                                 </div>
                             </div>
@@ -61,7 +64,6 @@ export class Home extends Component {
 
                     </form>
                 </div>
-
             </Container>
         );
 

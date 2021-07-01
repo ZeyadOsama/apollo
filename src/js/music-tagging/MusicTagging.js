@@ -1,6 +1,6 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'reactstrap';
-import './Home.css';
+import '../../css/styles.css';
 import axios from "axios";
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
@@ -30,17 +30,17 @@ export class MusicTagging extends Component {
 
     render() {
         return (
-            <div className="">
-                <Container>
-                    <h1>Music Tagging!</h1>
-                    <audio src={this.url + "Original"} controls className="audio-element1">
-                    </audio>
-                    <hr/>
-                    <br/>
-                    <Jumbotron> <img src={this.state.source}/> </Jumbotron>
+            <Container>
+                <div class="animation sequence fadeInBottom-narrow">
+                    <h1>
+                        Music Tagging
+                    </h1>
 
-                </Container>
-            </div>
+                    <audio src={this.url + "Original"} controls className="audio-element1"/>
+
+                    <Jumbotron> <img src={this.state.source} alt="result"/> </Jumbotron>
+                </div>
+            </Container>
         );
     }
 }

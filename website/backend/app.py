@@ -40,6 +40,12 @@ PLOTS_DIR = "plots/"
 
 @app.route('/', methods=['GET', 'POST'])
 def uploaded_file():
+    try:
+        os.makedirs(RESULTS_DIR, exist_ok=True)
+        print(f'Directory {RESULTS_DIR} created successfully.')
+    except OSError:
+        print(f'Directory {RESULTS_DIR} can not be created.')
+
     dst = RESULTS_DIR + RESULT_FILE
 
     if request.method == 'POST':
@@ -104,6 +110,12 @@ def downloaded_file_five():
 
 @app.route('/MusicTags')
 def downloaded_file_tags():
+    try:
+        os.makedirs(PLOTS_DIR, exist_ok=True)
+        print(f'Directory {PLOTS_DIR} created successfully.')
+    except OSError:
+        print(f'Directory {PLOTS_DIR} can not be created.')
+
     if request.method == 'GET':
         if os.path.exists("plots/PieChart.png"):
             os.remove("plots/PieChart.png")

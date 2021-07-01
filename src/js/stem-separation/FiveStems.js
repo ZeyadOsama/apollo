@@ -1,7 +1,7 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import './Home.css';
+import '../../css/styles.css';
 
 const url = process.env.APP_URL || 'http://localhost:5000/';
 
@@ -10,12 +10,12 @@ export class FiveStems extends Component {
 
     render() {
         return (
-            <div className="">
-                <Container>
+            <Container>
+                <div className="animation sequence fadeInBottom-narrow">
+
                     <h1>Five Stems Below</h1>
                     <hr/>
                     <br/>
-
 
                     <div class="container">
                         <div class="row">
@@ -23,9 +23,7 @@ export class FiveStems extends Component {
                                 <h5 className="">Original Audio File</h5>
                             </div>
                             <div class="col-9">
-                                <audio src={url + "Original"} controls className="position-relative">
-
-                                </audio>
+                                <audio src={url + "Original"} controls className="position-relative"/>
                             </div>
                         </div>
 
@@ -106,14 +104,10 @@ export class FiveStems extends Component {
 
                         </Jumbotron>
 
-
                     </div>
 
-
-                </Container>
-            </div>
-
-
+                </div>
+            </Container>
         );
     }
 }

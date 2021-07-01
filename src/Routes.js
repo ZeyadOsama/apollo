@@ -1,49 +1,26 @@
 ﻿import React from 'react';
 import {Route} from 'react-router';
-import {Home} from './components/Home';
-import {howitworks} from './components/howitworks';
-import {faq} from './components/faq';
-import {Tools} from './components/Tools';
-import './custom.css'
-import {Footer} from './components/Footer';
-import {StemSeparation} from './components/StemSeparation';
-import {MusicTagging} from './components/MusicTagging';
-import {TwoStems} from './components/TwoStems';
-import {FiveStems} from './components/FiveStems';
-import {FourStems} from './components/FourStems';
 
+import {Home} from './js/base/Home';
+import {howItWorks} from './js/base/HowItWorks';
+import {FAQ} from './js/base/FAQ';
+import {Tools} from './js/base/Tools';
+import {StemSeparation} from './js/stem-separation/StemSeparation';
+import {MusicTagging} from './js/music-tagging/MusicTagging';
+import {TwoStems} from './js/stem-separation/TwoStems';
+import {FiveStems} from './js/stem-separation/FiveStems';
+import {FourStems} from './js/stem-separation/FourStems';
 import {Router, Switch} from 'react-router-dom';
-import history from './components/history'
 
-
-//export default class App extends Component {
-//    static displayName = App.name;
-
-//    render() {
-//        return (
-//            <Layout>
-//                <Route exact path='/' component={Home} />
-//                <Route path='/howitworks' component={howitworks} />
-//                <Route path='/faq' component={faq} />
-//                <Route path='/Tools' component={Tools} />
-//                <Route path='/StemSeparation' component={StemSeparation} />
-//                <Route path='/MusicTagging' component={MusicTagging} />
-//                <Route path='/TwoStems' component={TwoStems} />
-//                <Route path='/FourStems' component={FourStems} />
-//                <Route path='/FiveStems' component={FiveStems} />
-//            </Layout>
-//        );
-//    }
-//}
+import history from './js/base/History'
 
 function Routes() {
-
     return (
         <Router history={history}>
             <Switch>
                 <Route exact path='/' component={Home}/>
-                <Route path='/howitworks' component={howitworks}/>
-                <Route path='/faq' component={faq}/>
+                <Route path='/HowItWorks' component={howItWorks}/>
+                <Route path='/FAQ' component={FAQ}/>
                 <Route path='/Tools' component={Tools}/>
                 <Route path='/StemSeparation' component={StemSeparation}/>
                 <Route path='/MusicTagging' component={MusicTagging}/>

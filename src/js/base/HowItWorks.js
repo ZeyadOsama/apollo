@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
 
-export class howitworks extends Component {
-    static displayName = howitworks.name;
+export class howItWorks extends Component {
+    static displayName = howItWorks.name;
 
 
     render() {

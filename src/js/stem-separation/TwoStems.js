@@ -14,7 +14,6 @@ export class TwoStems extends Component {
         instrumental: null,
     }
 
-
     render() {
         return (
             <Container>
@@ -41,8 +40,6 @@ export class TwoStems extends Component {
                         <br/>
 
                         <Jumbotron>
-
-
                             <div class="row">
                                 <div class="col">
                                     <h5 class="">Vocal</h5>
@@ -65,7 +62,6 @@ export class TwoStems extends Component {
                                 <div class="col-9">
                                     <audio src={url + "Instrumental"} controls
                                            class="position-relative">
-
                                     </audio>
                                 </div>
                             </div>

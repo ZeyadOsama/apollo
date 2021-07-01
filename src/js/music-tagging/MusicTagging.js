@@ -14,7 +14,6 @@ export class MusicTagging extends Component {
         this.url = process.env.APP_URL || 'http://localhost:5000/';
     }
 
-
     componentDidMount() {
         axios.get(this.url + 'MusicTags', {responseType: 'arraybuffer'}).then(resp => {
             const base64 = btoa(
@@ -27,18 +26,30 @@ export class MusicTagging extends Component {
         });
     }
 
-
     render() {
         return (
             <Container>
                 <div class="animation sequence fadeInBottom-narrow">
-                    <h1>
+                    <h1 class="title">
                         Music Tagging
                     </h1>
 
-                    <audio src={this.url + "Original"} controls class="audio-element1"/>
+                    <br/><br/>
 
-                    <Jumbotron> <img src={this.state.source} alt="result"/> </Jumbotron>
+                    <div class="audio-container">
+                        <audio controls>
+                            <source src={this.url + "Original"} type="audio/mpeg"/>
+                        </audio>
+                    </div>
+
+                    <div>
+                        <Jumbotron>
+                            <img class="center"
+                                 src={this.state.source}
+                                 alt="result"/>
+                        </Jumbotron>
+                    </div>
+
                 </div>
             </Container>
         );

@@ -1,2 +1,2 @@
-web: gunicorn website.backend.app:app --log-file=-
+web: gunicorn --chdir website/backend app:app --log-file=-
 worker: npm start

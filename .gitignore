@@ -708,6 +708,8 @@ Temporary Items
 *.wav
 *.wma
 *.png
+**results/
+**plots/
 **pretrained_models/
 **package-lock.json
 

@@ -1,3 +1,4 @@
+python=3.7.10
 _tflow_select=2.3.0=mkl
 absl-py=0.13.0=py37hecd8cb5_0
 astor=0.8.1=py37hecd8cb5_0

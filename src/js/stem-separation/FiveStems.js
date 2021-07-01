@@ -11,19 +11,19 @@ export class FiveStems extends Component {
     render() {
         return (
             <Container>
-                <div className="animation sequence fadeInBottom-narrow">
+                <div class="animation sequence fadeInBottom-narrow">
 
-                    <h1>Five Stems Below</h1>
-                    <hr/>
-                    <br/>
+                    <h1 class="title">
+                        Five Stems Below
+                    </h1>
 
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h5 className="">Original Audio File</h5>
+                                <h5 class="">Original Audio File</h5>
                             </div>
                             <div class="col-9">
-                                <audio src={url + "Original"} controls className="position-relative"/>
+                                <audio src={url + "Original"} controls class="position-relative"/>
                             </div>
                         </div>
 
@@ -35,10 +35,10 @@ export class FiveStems extends Component {
 
                             <div class="row">
                                 <div class="col">
-                                    <h5 className="">Vocal</h5>
+                                    <h5 class="">Vocal</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src={url + "Vocals"} controls className="position-relative">
+                                    <audio src={url + "Vocals"} controls class="position-relative">
 
                                     </audio>
 
@@ -50,10 +50,10 @@ export class FiveStems extends Component {
 
                             <div class="row">
                                 <div class="col">
-                                    <h5 className="">Bass</h5>
+                                    <h5 class="">Bass</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src={url + "Bass"} controls className="position-relative">
+                                    <audio src={url + "Bass"} controls class="position-relative">
 
                                     </audio>
                                 </div>
@@ -64,10 +64,10 @@ export class FiveStems extends Component {
 
                             <div class="row">
                                 <div class="col">
-                                    <h5 className="">Drums</h5>
+                                    <h5 class="">Drums</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src={url + "Drums"} controls className="position-relative">
+                                    <audio src={url + "Drums"} controls class="position-relative">
 
                                     </audio>
 
@@ -79,10 +79,10 @@ export class FiveStems extends Component {
 
                             <div class="row">
                                 <div class="col">
-                                    <h5 className="">Piano</h5>
+                                    <h5 class="">Piano</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src={url + "Piano"} controls className="position-relative">
+                                    <audio src={url + "Piano"} controls class="position-relative">
 
                                     </audio>
                                 </div>
@@ -93,10 +93,10 @@ export class FiveStems extends Component {
 
                             <div class="row">
                                 <div class="col">
-                                    <h5 className="">Instrumentals</h5>
+                                    <h5 class="">Instrumentals</h5>
                                 </div>
                                 <div class="col-9">
-                                    <audio src={url + "Other"} controls className="position-relative">
+                                    <audio src={url + "Other"} controls class="position-relative">
 
                                     </audio>
                                 </div>

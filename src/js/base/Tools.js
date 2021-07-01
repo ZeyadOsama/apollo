@@ -8,13 +8,16 @@ export class Tools extends Component {
     render() {
         return (
             <Container>
-                <div className="animation sequence fadeInBottom-narrow">
+                <div class="animation sequence fadeInBottom-narrow">
 
-                    <h1>Tools Page</h1>
+                    <h1 class="title">
+                        Tools Page
+                    </h1>
+
                     <div class="text-center">
                         <a id="clickable" class="btn btn-outline-secondary btn-lg" href="/StemSeparation">
                             <h5>Stem Separation</h5>
-                            <h6>Separating Channels Into Two, Four or Five stems.</h6>
+                            <h6>Separating Channels Into<br/>Two, Four or Five stems.</h6>
                         </a>
                         <a id="clickable" class="btn btn-outline-secondary btn-lg" href="/MusicTagging">
                             <h5>Music Tagging</h5>

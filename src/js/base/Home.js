@@ -28,44 +28,47 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-                <h1 class="animation sequence fadeInBottom-narrow">
-                    Attach Your Audio File Below
-                </h1>
+                <div class="animation sequence fadeInBottom-narrow">
 
-                <br/>
+                    <h1 class="title">
+                        Attach Your Audio File Below
+                    </h1>
 
-                <div class="row animation sequence fadeInBottom-narrow">
-                    <form class="md-form">
+                    <br/>
 
-                        <div className="container">
-                            <div className="row">
-                                <div className="col text-center">
-                                    <div className="file-field">
-                                        <div className="btn btn-outline-light">
-                                            <input name='file' type="file" onChange={this.onFileChange}/>
+                    <div class="row">
+                        <form class="md-form">
+
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col text-center">
+                                        <div className="file-field">
+                                            <div className="btn btn-outline-light">
+                                                <input name='file' type="file" onChange={this.onFileChange}/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <br/>
+                            <br/>
 
-                        <div className="container">
-                            <div className="row">
-                                <div className="col text-center">
-                                    <button className="btn btn-outline-light text-uppercase"
-                                            onClick={this.onFileUpload}>
-                                        Upload
-                                    </button>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col text-center">
+                                        <button className="btn btn-outline-light text-uppercase"
+                                                onClick={this.onFileUpload}>
+                                            Upload
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </form>
+                        </form>
+                    </div>
+
                 </div>
             </Container>
         );
-
     }
 }

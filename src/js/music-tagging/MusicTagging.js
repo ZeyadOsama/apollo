@@ -36,7 +36,7 @@ export class MusicTagging extends Component {
                         Music Tagging
                     </h1>
 
-                    <audio src={this.url + "Original"} controls className="audio-element1"/>
+                    <audio src={this.url + "Original"} controls class="audio-element1"/>
 
                     <Jumbotron> <img src={this.state.source} alt="result"/> </Jumbotron>
                 </div>

@@ -1,6 +1,9 @@
 {
   "name": "apollo",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": "Rewan Maklad, Omar Marzouk, Marwan Elsafty, Zeyad Osama",
+  "description": "Music processing engine.",
+  "license": "MIT",
   "private": false,
   "engines": {
     "node": "15.0.1",
@@ -29,11 +32,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "main": "src/index.jsx",
   "devDependencies": {},
-  "author": "",
-  "license": "MIT",
-  "description": "",
+  "main": "src/index.jsx",
   "browserslist": {
     "production": [
       ">0.2%",

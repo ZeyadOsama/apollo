@@ -17,11 +17,11 @@ export default function App() {
             </Router>
 
 
-            <div className="container-bottom">
-                <p className="small">
+            <footer class="footer">
+                <p class="small">
                     © 2021 Apollo. All rights reserved.
                 </p>
-            </div>
+            </footer>
         </div>
     )
 }

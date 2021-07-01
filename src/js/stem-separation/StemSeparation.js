@@ -33,10 +33,11 @@ export class StemSeparation extends Component {
     render() {
         return (
             <Container>
+                <div className="animation sequence fadeInBottom-narrow">
 
-                <h1>Stem Separation</h1>
-
-                <div className="">
+                    <h1 class="title">
+                        Stem Separation
+                    </h1>
 
                     <div class="text-center">
                         <div class="container">
@@ -49,12 +50,12 @@ export class StemSeparation extends Component {
                                                 <button id="clickable" class="btn btn-outline-secondary btn-lg"
                                                         onClick={this.TwoStems}>
                                                     <h5>Two Stems Separation</h5>
-                                                    <h5>Vocal & Instrumentals</h5>
+                                                    <h6>Vocal & Instrumentals</h6>
                                                 </button>
                                             </div>
 
                                             <div class="col-md-4">
-                                                <button id="clickable" className="btn btn-outline-secondary btn-lg"
+                                                <button id="clickable" class="btn btn-outline-secondary btn-lg"
                                                         onClick={this.FourStems}>
                                                     <h5>Four Stems Separation</h5>
                                                     <h6>Vocal, Bass, Drums & Instrumentals</h6>
@@ -62,7 +63,7 @@ export class StemSeparation extends Component {
                                             </div>
 
                                             <div class="col-md-4">
-                                                <button id="clickable" className="btn btn-outline-secondary btn-lg"
+                                                <button id="clickable" class="btn btn-outline-secondary btn-lg"
                                                         onClick={this.FiveStems}>
                                                     <h5>Five Stems Separation</h5>
                                                     <h6>Vocal, Bass, Drums, Piano & Instrumentals</h6>

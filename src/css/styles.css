@@ -3,24 +3,22 @@
 }
 
 body {
-    background: rgba(255, 255, 255, 0) linear-gradient(to bottom right, #49a09d, #5f2c82) no-repeat;
+    background: rgba(255, 255, 255, 0) linear-gradient(to bottom right, #49a09d, #5f2c82) no-repeat fixed;
     background-size: 100% 100vh;
+    font-weight: lighter;
+    color: white;
 }
 
 h1 {
-    color: #ffffff;
-    line-height: 79px;
-    font-weight: 800;
-    white-space: normal;
+    text-align: center;
+    font-weight: lighter;
+    color: white;
     text-overflow: ellipsis;
     overflow: hidden;
-    text-align: center;
 }
 
 audio {
-
     border-radius: 10px;
-
 }
 
 ul {
@@ -50,6 +48,46 @@ li a:hover {
     background-color: rgba(0, 0, 0, 0.20);
     color: white;
     text-decoration: none;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.20);
+    color: white;
+    text-align: center;
+    font-size: small;
+    padding: 0.25rem;
+}
+
+.navbar-brand {
+    /* background-color: rgb(94, 40, 40); */
+    /* margin-right: 900px; */
+    position: absolute;
+    left: 0;
+}
+
+.title {
+    margin: 5rem auto 1rem auto;
+}
+
+.shp-block {
+    color: white;
+    margin: 0 auto 5rem auto;
+}
+
+
+.subheader {
+    font-weight: bold;
+    margin: 2rem auto 1rem auto;
+}
+
+.paragraph {
+    font-weight: lighter;
 }
 
 #exampleFormControlFile1 {
@@ -100,7 +138,6 @@ li a:hover {
 }*/
 
 .btn-secondary {
-
     background-color: white;
     border-radius: 20px;
     color: rgb(43, 0, 25);
@@ -146,25 +183,4 @@ li a:hover {
 .meh {
     display: flex;
     justify-content: center;
-}
-
-.container-bottom {
-    text-align: center;
-    font-size: small;
-    height: 30px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.20);
-    color: white;
-    position: absolute;
-    bottom: 0;
-    margin: 0;
-    padding: 0.25rem;
-}
-
-.navbar-brand {
-    /* background-color: rgb(94, 40, 40); */
-    /* margin-right: 900px; */
-    position: absolute;
-    left: 0px;
-
 }

@@ -1,2 +1,2 @@
-web: gunicorn website.backend.app:app --log-file=-
+web: cd website/backend; flask run;
 worker: npm start

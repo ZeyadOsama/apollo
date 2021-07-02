@@ -1,5 +1,3 @@
-# Importing required libraries.
-
 # !/usr/bin/env python
 # coding: utf8
 
@@ -9,8 +7,6 @@ app.py:
 
 __author__ = "Omar Marzouk"
 __license__ = "MIT License"
-
-from __future__ import print_function
 
 import os
 import shutil
@@ -23,13 +19,13 @@ from flask_cors import CORS
 from pydub import AudioSegment
 from werkzeug.utils import secure_filename
 
+from apollo.engine.models.genre_classification.tagger import *
+
 currDir = os.path.dirname(os.path.realpath(__file__))
 webDir = os.path.abspath(os.path.join(currDir, '..'))
 rootDir = os.path.abspath(os.path.join(webDir, '..'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
-
-from apollo.engine.models.genre_classification.tagger import *
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')
@@ -44,9 +40,9 @@ PLOTS_DIR = "plots/"
 def uploaded_file():
     try:
         os.makedirs(RESULTS_DIR, exist_ok=True)
-        print(f'Directory {RESULTS_DIR} created successfully.')
+        print('Directory {} created successfully.'.format(RESULTS_DIR))
     except OSError:
-        print(f'Directory {RESULTS_DIR} can not be created.')
+        print('Directory {} could not be created.'.format(RESULTS_DIR))
 
     dst = RESULTS_DIR + RESULT_FILE
 
@@ -114,9 +110,9 @@ def downloaded_file_five():
 def downloaded_file_tags():
     try:
         os.makedirs(PLOTS_DIR, exist_ok=True)
-        print(f'Directory {PLOTS_DIR} created successfully.')
+        print('Directory {} created successfully.'.format(PLOTS_DIR))
     except OSError:
-        print(f'Directory {PLOTS_DIR} can not be created.')
+        print('Directory {} could not be created.'.format(PLOTS_DIR))
 
     if request.method == 'GET':
         if os.path.exists("plots/PieChart.png"):

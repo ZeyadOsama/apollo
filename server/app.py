@@ -19,13 +19,14 @@ from flask_cors import CORS
 from pydub import AudioSegment
 from werkzeug.utils import secure_filename
 
-from apollo.engine.models.genre_classification.tagger import *
-
 currDir = os.path.dirname(os.path.realpath(__file__))
-webDir = os.path.abspath(os.path.join(currDir, '..'))
-rootDir = os.path.abspath(os.path.join(webDir, '..'))
+# webDir = os.path.abspath(os.path.join(currDir, '..'))
+rootDir = os.path.abspath(os.path.join(currDir, '..'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
+
+
+from apollo.engine.models.genre_classification.tagger import *
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')
@@ -36,6 +37,7 @@ RESULT_MP3 = "audio.mp3"
 
 DIR_RESULTS = 'results/'
 DIR_STEM = DIR_RESULTS + 'stem/'
+DIR_SEP = DIR_STEM + 'audio/'
 DIR_PLOT = DIR_RESULTS + 'plot/'
 
 
@@ -100,7 +102,7 @@ def read_wav_file(filename):
 def downloaded_file_two():
     if os.path.exists(DIR_STEM + "audio/"):
         shutil.rmtree(DIR_STEM + "audio/")
-    os.system("spleeter separate -i {}audio.wav -p spleeter:2stems -B tensorflow -o {}/".format(DIR_RESULTS, DIR_STEM))
+    os.system("spleeter separate -i {}audio.wav -p spleeter:2stems -B tensorflow -o {}".format(DIR_RESULTS, DIR_STEM))
     return "done!"
 
 
@@ -108,7 +110,7 @@ def downloaded_file_two():
 def downloaded_file_four():
     if os.path.exists(DIR_STEM + "audio/"):
         shutil.rmtree(DIR_STEM + "audio/")
-    os.system("spleeter separate -i {}audio.wav -p spleeter:4stems -B tensorflow -o {}/".format(DIR_RESULTS, DIR_STEM))
+    os.system("spleeter separate -i {}audio.wav -p spleeter:4stems -B tensorflow -o {}".format(DIR_RESULTS, DIR_STEM))
     return "done!"
 
 
@@ -116,7 +118,7 @@ def downloaded_file_four():
 def downloaded_file_five():
     if os.path.exists(DIR_STEM + "audio/"):
         shutil.rmtree(DIR_STEM + "audio/")
-    os.system("spleeter separate -i {}audio.wav -p spleeter:5stems -B tensorflow -o {}/".format(DIR_RESULTS, DIR_STEM))
+    os.system("spleeter separate -i {}audio.wav -p spleeter:5stems -B tensorflow -o {}".format(DIR_RESULTS, DIR_STEM))
     return "done!"
 
 
@@ -147,9 +149,9 @@ def stream_original():
 def stream_vocal():
     def generate():
         while True:
-            if os.path.exists(DIR_STEM + "vocals.wav"):
+            if os.path.exists(DIR_SEP + "vocals.wav"):
                 break
-        with open(DIR_STEM + "vocals.wav", "rb") as fwav:
+        with open(DIR_SEP + "vocals.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data
@@ -162,9 +164,9 @@ def stream_vocal():
 def stream_instruments():
     def generate():
         while True:
-            if os.path.exists(DIR_STEM + "accompaniment.wav"):
+            if os.path.exists(DIR_SEP + "accompaniment.wav"):
                 break
-        with open(DIR_STEM + "accompaniment.wav", "rb") as fwav:
+        with open(DIR_SEP + "accompaniment.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data
@@ -177,9 +179,9 @@ def stream_instruments():
 def stream_bass():
     def generate():
         while True:
-            if os.path.exists(DIR_STEM + "bass.wav"):
+            if os.path.exists(DIR_SEP + "bass.wav"):
                 break
-        with open(DIR_STEM + "bass.wav", "rb") as fwav:
+        with open(DIR_SEP + "bass.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data
@@ -192,9 +194,9 @@ def stream_bass():
 def stream_drums():
     def generate():
         while True:
-            if os.path.exists(DIR_STEM + "drums.wav"):
+            if os.path.exists(DIR_SEP + "drums.wav"):
                 break
-        with open(DIR_STEM + "drums.wav", "rb") as fwav:
+        with open(DIR_SEP + "drums.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data
@@ -207,9 +209,9 @@ def stream_drums():
 def stream_piano():
     def generate():
         while True:
-            if os.path.exists(DIR_STEM + "piano.wav"):
+            if os.path.exists(DIR_SEP + "piano.wav"):
                 break
-        with open(DIR_STEM + "piano.wav", "rb") as fwav:
+        with open(DIR_SEP + "piano.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data
@@ -222,9 +224,9 @@ def stream_piano():
 def stream_other():
     def generate():
         while True:
-            if os.path.exists(DIR_STEM + "other.wav"):
+            if os.path.exists(DIR_SEP + "other.wav"):
                 break
-        with open(DIR_STEM + "other.wav", "rb") as fwav:
+        with open(DIR_SEP + "other.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data

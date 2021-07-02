@@ -22,18 +22,18 @@ from werkzeug.utils import secure_filename
 from apollo.engine.models.genre_classification.tagger import *
 
 currDir = os.path.dirname(os.path.realpath(__file__))
-webDir = os.path.abspath(os.path.join(currDir, '..'))
-rootDir = os.path.abspath(os.path.join(webDir, '..'))
+webDir = os.path.abspath(os.path.join(currDir, 'website'))
+rootDir = os.path.abspath(os.path.join(webDir, 'website'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')
 app.config['CORS_HEADERS'] = 'Content-Type'
-RESULTS_DIR = "results/"
+RESULTS_DIR = "website/backend/results/"
 RESULT_FILE = "audio.wav"
 RESULT_MP3 = "audio.mp3"
-PLOTS_DIR = "plots/"
+PLOTS_DIR = "website/backend/plots/"
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -84,24 +84,24 @@ def read_wav_file(filename):
 
 @app.route('/GetTwoStems')
 def downloaded_file_two():
-    if os.path.exists("results/audio/"):
-        shutil.rmtree("results/audio/")
+    if os.path.exists("website/backend/results/audio/"):
+        shutil.rmtree("website/backend/results/audio/")
     os.system("spleeter separate -i results/audio.wav -p spleeter:2stems -B tensorflow -o results/")
     return "done!"
 
 
 @app.route('/GetFourStems')
 def downloaded_file_four():
-    if os.path.exists("results/audio/"):
-        shutil.rmtree("results/audio/")
+    if os.path.exists("website/backend/results/audio/"):
+        shutil.rmtree("website/backend/results/audio/")
     os.system("spleeter separate -i results/audio.wav -p spleeter:4stems -B tensorflow -o results/")
     return "done!"
 
 
 @app.route('/GetFiveStems')
 def downloaded_file_five():
-    if os.path.exists("results/audio/"):
-        shutil.rmtree("results/audio/")
+    if os.path.exists("website/backend/results/audio/"):
+        shutil.rmtree("website/backend/results/audio/")
     os.system("spleeter separate -i results/audio.wav -p spleeter:5stems -B tensorflow -o results/")
     return "done!"
 
@@ -115,16 +115,16 @@ def downloaded_file_tags():
         print('Directory {} could not be created.'.format(PLOTS_DIR))
 
     if request.method == 'GET':
-        if os.path.exists("plots/PieChart.png"):
-            os.remove("plots/PieChart.png")
+        if os.path.exists("website/backend/plots/PieChart.png"):
+            os.remove("website/backend/plots/PieChart.png")
         extractor(RESULTS_DIR + RESULT_MP3, PLOTS_DIR)
-        return send_file("plots/PieChart.png", mimetype='image/png')
+        return send_file("website/backend/plots/PieChart.png", mimetype='image/png')
 
 
 @app.route("/Original")
 def stream_original():
     def generate():
-        with open("results/audio.wav", "rb") as fwav:
+        with open("website/backend/results/audio.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data
@@ -137,9 +137,9 @@ def stream_original():
 def stream_vocal():
     def generate():
         while True:
-            if os.path.exists("results/audio/vocals.wav"):
+            if os.path.exists("website/backend/results/audio/vocals.wav"):
                 break
-        with open("results/audio/vocals.wav", "rb") as fwav:
+        with open("website/backend/results/audio/vocals.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data
@@ -152,9 +152,9 @@ def stream_vocal():
 def stream_instruments():
     def generate():
         while True:
-            if os.path.exists("results/audio/accompaniment.wav"):
+            if os.path.exists("website/backend/results/audio/accompaniment.wav"):
                 break
-        with open("results/audio/accompaniment.wav", "rb") as fwav:
+        with open("website/backend/results/audio/accompaniment.wav", "rb") as fwav:
             data = fwav.read(1024)
             while data:
                 yield data

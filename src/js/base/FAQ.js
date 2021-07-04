@@ -7,9 +7,9 @@ export class FAQ extends Component {
     render() {
         return (
             <Container>
-                <div class="animation sequence fadeInBottom-narrow">
+                <div className="animation sequence fadeInBottom-narrow">
 
-                    <h1 class="title">
+                    <h1 className="title">
                         FAQ
                     </h1>
 

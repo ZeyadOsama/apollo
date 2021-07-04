@@ -80,17 +80,17 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-                <div class="animation sequence fadeInBottom-narrow">
+                <div className="animation sequence fadeInBottom-narrow">
 
-                    <h1 class="title">
+                    <h1 className="title">
                         Attach Your Audio File Below
                     </h1>
 
                     <br/><br/>
 
-                    <form class="container-33 md-form">
+                    <form className="container-33 md-form">
 
-                        <input class="container-100 form-control btn btn-outline-light"
+                        <input className="container-100 form-control btn btn-outline-light"
                                name='file'
                                type="file"
                                required="required"
@@ -98,7 +98,7 @@ export class Home extends Component {
 
                         <br/><br/>
 
-                        <button class="container-100 blurry btn btn-outline-light text-uppercase"
+                        <button className="container-100 blurry btn btn-outline-light text-uppercase"
                                 onClick={this.onFileUpload}>
                             Upload
                         </button>

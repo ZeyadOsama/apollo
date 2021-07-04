@@ -12,18 +12,18 @@ export class FiveStems extends Component {
     render() {
         return (
             <Container>
-                <div class="animation sequence fadeInBottom-narrow">
+                <div className="animation sequence fadeInBottom-narrow">
 
-                    <h1 class="title">
+                    <h1 className="title">
                         Five Stems Below
                     </h1>
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="">Original Audio File</h5>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <h5 className="">Original Audio File</h5>
                             </div>
-                            <div class="col-9">
+                            <div className="col-9">
                             <AudioPlayer name='Original'/>
                             </div>
                         </div>
@@ -34,11 +34,11 @@ export class FiveStems extends Component {
                         <Jumbotron>
 
 
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="">Vocal</h5>
+                            <div className="row">
+                                <div className="col">
+                                    <h5 className="">Vocal</h5>
                                 </div>
-                                <div class="col-9">
+                                <div className="col-9">
                         <AudioPlayer name='Vocals'/>
 
                                 </div>
@@ -47,11 +47,11 @@ export class FiveStems extends Component {
                             <br/>
                             <br/>
 
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="">Bass</h5>
+                            <div className="row">
+                                <div className="col">
+                                    <h5 className="">Bass</h5>
                                 </div>
-                                <div class="col-9">
+                                <div className="col-9">
                         <AudioPlayer name='Bass'/>
                                 </div>
                             </div>
@@ -59,11 +59,11 @@ export class FiveStems extends Component {
                             <br/>
                             <br/>
 
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="">Drums</h5>
+                            <div className="row">
+                                <div className="col">
+                                    <h5 className="">Drums</h5>
                                 </div>
-                                <div class="col-9">
+                                <div className="col-9">
                         <AudioPlayer name='Drums'/>
 
                                 </div>
@@ -72,11 +72,11 @@ export class FiveStems extends Component {
                             <br/>
                             <br/>
 
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="">Piano</h5>
+                            <div className="row">
+                                <div className="col">
+                                    <h5 className="">Piano</h5>
                                 </div>
-                                <div class="col-9">
+                                <div className="col-9">
                         <AudioPlayer name='Piano'/>
                                 </div>
                             </div>
@@ -84,11 +84,11 @@ export class FiveStems extends Component {
                             <br/>
                             <br/>
 
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="">Instrumentals</h5>
+                            <div className="row">
+                                <div className="col">
+                                    <h5 className="">Instrumentals</h5>
                                 </div>
-                                <div class="col-9">
+                                <div className="col-9">
                         <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>

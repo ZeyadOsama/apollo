@@ -18,18 +18,18 @@ export class TwoStems extends Component {
     render() {
         return (
             <Container>
-                <div class="animation sequence fadeInBottom-narrow">
+                <div className="animation sequence fadeInBottom-narrow">
 
-                    <h1 class="title">
+                    <h1 className="title">
                         Two Stems Below
                     </h1>
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="">Original Audio File</h5>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <h5 className="">Original Audio File</h5>
                             </div>
-                            <div class="col-9">
+                            <div className="col-9">
                             <AudioPlayer name='Original'/>
 
                             </div>
@@ -39,11 +39,11 @@ export class TwoStems extends Component {
                         <br/>
 
                         <Jumbotron>
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="">Vocal</h5>
+                            <div className="row">
+                                <div className="col">
+                                    <h5 className="">Vocal</h5>
                                 </div>
-                                <div class="col-9">
+                                <div className="col-9">
 
                         <AudioPlayer name='Vocals'/>
                                 </div>
@@ -52,11 +52,11 @@ export class TwoStems extends Component {
                             <br/>
                             <br/>
 
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="">Instrumental</h5>
+                            <div className="row">
+                                <div className="col">
+                                    <h5 className="">Instrumental</h5>
                                 </div>
-                                <div class="col-9">
+                                <div className="col-9">
                         <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>

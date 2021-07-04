@@ -17,8 +17,8 @@ export default function App() {
             </Router>
 
 
-            <footer class="footer">
-                <p class="small">
+            <footer className="footer">
+                <p className="small">
                     © 2021 Apollo. All rights reserved.
                 </p>
             </footer>

@@ -30,8 +30,8 @@ export class MusicTagging extends Component {
     render() {
         return (
             <Container>
-                <div class="animation sequence fadeInBottom-narrow">
-                    <h1 class="title">
+                <div className="animation sequence fadeInBottom-narrow">
+                    <h1 className="title">
                         Music Tagging
                     </h1>
 
@@ -46,7 +46,7 @@ export class MusicTagging extends Component {
 
                     <div>
                         <Jumbotron>
-                            <img class="center"
+                            <img className="center"
                                  src={this.state.source}
                                  alt="result"/>
                         </Jumbotron>

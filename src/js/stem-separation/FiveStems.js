@@ -2,6 +2,7 @@
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import '../../css/styles.css';
+import {AudioPlayer} from "../elements/AudioPlayer";
 
 const url = process.env.APP_URL || 'http://localhost:5000/';
 
@@ -23,32 +24,7 @@ export class FiveStems extends Component {
                                 <h5 class="">Original Audio File</h5>
                             </div>
                             <div class="col-9">
-                                <div className="audio-player">
-                        <div className="timeline">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="controls">
-                            <div className="play-container">
-                                <div className="toggle-play play">
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="current">0:00</div>
-                                <div className="divider">/</div>
-                                <div className="length"></div>
-                            </div>
-                            <div className="name">Original</div>
-                            <div className="volume-container">
-                                <div className="volume-button">
-                                    <div className="volume icono-volumeMedium"></div>
-                                </div>
-
-                                <div className="volume-slider">
-                                    <div className="volume-percentage"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <AudioPlayer name='Original'/>
                             </div>
                         </div>
 
@@ -63,32 +39,7 @@ export class FiveStems extends Component {
                                     <h5 class="">Vocal</h5>
                                 </div>
                                 <div class="col-9">
-                        <div className="audio-player">
-                        <div className="timeline">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="controls">
-                            <div className="play-container">
-                                <div className="toggle-play play">
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="current">0:00</div>
-                                <div className="divider">/</div>
-                                <div className="length"></div>
-                            </div>
-                            <div className="name">Vocals</div>
-                            <div className="volume-container">
-                                <div className="volume-button">
-                                    <div className="volume icono-volumeMedium"></div>
-                                </div>
-
-                                <div className="volume-slider">
-                                    <div className="volume-percentage"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <AudioPlayer name='Vocals'/>
 
                                 </div>
                             </div>
@@ -101,32 +52,7 @@ export class FiveStems extends Component {
                                     <h5 class="">Bass</h5>
                                 </div>
                                 <div class="col-9">
-                        <div className="audio-player">
-                        <div className="timeline">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="controls">
-                            <div className="play-container">
-                                <div className="toggle-play play">
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="current">0:00</div>
-                                <div className="divider">/</div>
-                                <div className="length"></div>
-                            </div>
-                            <div className="name">Bass</div>
-                            <div className="volume-container">
-                                <div className="volume-button">
-                                    <div className="volume icono-volumeMedium"></div>
-                                </div>
-
-                                <div className="volume-slider">
-                                    <div className="volume-percentage"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <AudioPlayer name='Bass'/>
                                 </div>
                             </div>
 
@@ -138,32 +64,7 @@ export class FiveStems extends Component {
                                     <h5 class="">Drums</h5>
                                 </div>
                                 <div class="col-9">
-                        <div className="audio-player">
-                        <div className="timeline">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="controls">
-                            <div className="play-container">
-                                <div className="toggle-play play">
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="current">0:00</div>
-                                <div className="divider">/</div>
-                                <div className="length"></div>
-                            </div>
-                            <div className="name">Drums</div>
-                            <div className="volume-container">
-                                <div className="volume-button">
-                                    <div className="volume icono-volumeMedium"></div>
-                                </div>
-
-                                <div className="volume-slider">
-                                    <div className="volume-percentage"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <AudioPlayer name='Drums'/>
 
                                 </div>
                             </div>
@@ -176,32 +77,7 @@ export class FiveStems extends Component {
                                     <h5 class="">Piano</h5>
                                 </div>
                                 <div class="col-9">
-                        <div className="audio-player">
-                        <div className="timeline">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="controls">
-                            <div className="play-container">
-                                <div className="toggle-play play">
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="current">0:00</div>
-                                <div className="divider">/</div>
-                                <div className="length"></div>
-                            </div>
-                            <div className="name">Piano</div>
-                            <div className="volume-container">
-                                <div className="volume-button">
-                                    <div className="volume icono-volumeMedium"></div>
-                                </div>
-
-                                <div className="volume-slider">
-                                    <div className="volume-percentage"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <AudioPlayer name='Piano'/>
                                 </div>
                             </div>
 
@@ -213,32 +89,7 @@ export class FiveStems extends Component {
                                     <h5 class="">Instrumentals</h5>
                                 </div>
                                 <div class="col-9">
-                        <div className="audio-player">
-                        <div className="timeline">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="controls">
-                            <div className="play-container">
-                                <div className="toggle-play play">
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="current">0:00</div>
-                                <div className="divider">/</div>
-                                <div className="length"></div>
-                            </div>
-                            <div className="name">Other</div>
-                            <div className="volume-container">
-                                <div className="volume-button">
-                                    <div className="volume icono-volumeMedium"></div>
-                                </div>
-
-                                <div className="volume-slider">
-                                    <div className="volume-percentage"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>
 

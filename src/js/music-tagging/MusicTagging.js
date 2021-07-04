@@ -3,6 +3,7 @@ import {Container} from 'reactstrap';
 import '../../css/styles.css';
 import axios from "axios";
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import {AudioPlayer} from "../elements/AudioPlayer";
 
 
 export class MusicTagging extends Component {
@@ -27,7 +28,6 @@ export class MusicTagging extends Component {
     }
 
     render() {
-        
         return (
             <Container>
                 <div class="animation sequence fadeInBottom-narrow">
@@ -42,32 +42,7 @@ export class MusicTagging extends Component {
                     {/*        <source src={this.url + "Original"} type="audio/mpeg"/>*/}
                     {/*    </audio>*/}
                     {/*</div>*/}
-                    <div className="audio-player">
-                        <div className="timeline">
-                            <div className="progress"></div>
-                        </div>
-                        <div className="controls">
-                            <div className="play-container">
-                                <div className="toggle-play play">
-                                </div>
-                            </div>
-                            <div className="time">
-                                <div className="current">0:00</div>
-                                <div className="divider">/</div>
-                                <div className="length"></div>
-                            </div>
-                            <div className="name">Original</div>
-                            <div className="volume-container">
-                                <div className="volume-button">
-                                    <div className="volume icono-volumeMedium"></div>
-                                </div>
-
-                                <div className="volume-slider">
-                                    <div className="volume-percentage"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <AudioPlayer name='Original'/>
 
                     <div>
                         <Jumbotron>

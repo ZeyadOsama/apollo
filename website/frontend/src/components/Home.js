@@ -3,6 +3,9 @@ import './Home.css';
 import {Container} from 'react-bootstrap';
 import history from './history';
 import axios from 'axios';
+import Dropzone from '../Dropzone';
+import { Download } from 'react-bootstrap-icons';
+import DownloadButton from './DownloadButton';
 
 
 export class Home extends Component {
@@ -13,6 +16,7 @@ export class Home extends Component {
 
     onFileChange = event => {
         this.setState({selectedFile: event.target.files[0], source: event.target.files[0].name});
+      
     };
 
     onFileUpload = () => {
@@ -31,26 +35,13 @@ export class Home extends Component {
 
 
                     <h1>Please attach your audio file</h1>
+                    
 
                     <div class="row">
                         <form class="md-form">
+                            <Dropzone onChange={this.onFileChange}   />
 
-
-                            <div class="file-field">
-                                <div class="btn btn-secondary btn-lg float-left">
-
-                                    <input name='file' type="file" onChange={this.onFileChange}/>
-                                </div>
-
-                                <div class="file-path-wrapper">
-                                    <br/>
-                                    {/* <input class="file-path validate" type="text" placeholder="Upload your file" /> */}
-                                </div>
-                            </div>
-
-
-                            <button onClick={this.onFileUpload} class="btn btn-secondary btn-lg"> Done</button>
-
+                            <button onClick={this.onFileUpload} class="btn btn-secondary btn-lg">Next</button>
                         </form>
                     </div>
 

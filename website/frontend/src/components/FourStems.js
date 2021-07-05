@@ -2,6 +2,7 @@
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import './Home.css';
+import DownloadButton from './DownloadButton';
 
 
 export class FourStems extends Component {
@@ -26,6 +27,7 @@ export class FourStems extends Component {
                                 <audio src="http://localhost:5000/Original" controls className="position-relative">
 
                                 </audio>
+
                             </div>
                         </div>
 
@@ -43,6 +45,7 @@ export class FourStems extends Component {
                                     <audio src="http://localhost:5000/Vocals" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 
@@ -57,6 +60,7 @@ export class FourStems extends Component {
                                     <audio src="http://localhost:5000/Bass" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 
@@ -71,6 +75,7 @@ export class FourStems extends Component {
                                     <audio src="http://localhost:5000/Drums" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 
@@ -85,6 +90,7 @@ export class FourStems extends Component {
                                     <audio src="http://localhost:5000/Other" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 

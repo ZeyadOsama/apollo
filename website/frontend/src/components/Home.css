@@ -7,12 +7,15 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
+    margin-top: 5%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
 body {
-    background-image: url(./images/background.jpg);
+    background-image: url(./images/background.jpg) ; 
     background-size: cover;
+    background-color: #fafafa;
 
 
 }
@@ -26,47 +29,15 @@ body {
     bottom: -191px; */
 }
 
-/* .btn-light {
-    position: relative;
-    transition: .5s ease;
-    top: 200px;
-    left: 420px;
-    right: 440px;
-    bottom: -191px;
-}
-
-.btn-primary {
-    position: relative;
-    top: 200px;
-    left: 100px;
-
-
-}
-
-.btn-secondary {
-    position: relative;
-    top: 200px;
-    left: 180px;
-}
-
-
-.audio-element1 {
-    position: relative;
-    top: 10px;
-    left: 80px;
-}
-
-.btn-info {
-    position: relative;
-    top: 200px;
-    left: 800px;
-}*/
 
 .btn-secondary {
 
     background-color: white;
     border-radius: 20px;
     color: rgb(43, 0, 25);
+    position: absolute;
+    top: 550px;
+    left: 600px;
 
 }
 
@@ -120,4 +91,74 @@ audio {
 .meh {
     display: flex;
     justify-content: center;
+}
+
+.filechooser{
+    position: relative;
+    left: 400px;
+    width: 100%;
+    height: 200px;
+    /* width: 0.1px;
+	height: 0.1px;
+	opacity: 0; */
+    border: 3px solid rgb(105, 96, 96);
+    background-color: rgb(161, 95, 115);
+    overflow: hidden;
+    /* display: none; */
+    
+}
+.filechooser:hover{
+    background-color: rgb(170, 155, 153);
+}
+
+.file-field{
+    outline-width: 10%;
+    outline-color: rgb(201, 39, 88);
+}
+ /* .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+} */
+
+/* .filechooser + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+} */
+
+/* .inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}  */
+
+.dropzone-content{
+
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    left: 400px;
+    border-style: dashed;
+    border-color: rgb(175 88 49);
+    margin-top: 5%;
+    background-color: rgb(141 136 122 / 42%);
+    
+}
+h3{
+
+    color: white;
+}
+
+#downloadicon.btn.btn-default{
+
+    /* position: absolute;
+    left: 749px;
+    top: 346px; */
+    color: #eaeaea;
+    font-size: large;
 }

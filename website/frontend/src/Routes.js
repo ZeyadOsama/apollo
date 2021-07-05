@@ -11,37 +11,19 @@ import {MusicTagging} from './components/MusicTagging';
 import {TwoStems} from './components/TwoStems';
 import {FiveStems} from './components/FiveStems';
 import {FourStems} from './components/FourStems';
-
+import {HomePage} from './components/HomePage';
 import {Router, Switch} from 'react-router-dom';
 import history from './components/history'
 
 
-//export default class App extends Component {
-//    static displayName = App.name;
 
-//    render() {
-//        return (
-//            <Layout>
-//                <Route exact path='/' component={Home} />
-//                <Route path='/howitworks' component={howitworks} />
-//                <Route path='/faq' component={faq} />
-//                <Route path='/Tools' component={Tools} />
-//                <Route path='/StemSeparation' component={StemSeparation} />
-//                <Route path='/MusicTagging' component={MusicTagging} />
-//                <Route path='/TwoStems' component={TwoStems} />
-//                <Route path='/FourStems' component={FourStems} />
-//                <Route path='/FiveStems' component={FiveStems} />
-//            </Layout>
-//        );
-//    }
-//}
 
 function Routes() {
 
     return (
         <Router history={history}>
             <Switch>
-                <Route exact path='/' component={Home}/>
+                <Route exact path='/Home' component={Home}/>
                 <Route path='/howitworks' component={howitworks}/>
                 <Route path='/faq' component={faq}/>
                 <Route path='/Tools' component={Tools}/>
@@ -50,6 +32,7 @@ function Routes() {
                 <Route path='/TwoStems' component={TwoStems}/>
                 <Route path='/FourStems' component={FourStems}/>
                 <Route path='/FiveStems' component={FiveStems}/>
+                <Route path='/' component={HomePage}/>
             </Switch>
         </Router>
     )

@@ -1,6 +1,7 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import DownloadButton from './DownloadButton';
 import './Home.css';
 
 
@@ -26,6 +27,7 @@ export class FiveStems extends Component {
                                 <audio src="http://localhost:5000/Original" controls className="position-relative">
 
                                 </audio>
+                                
                             </div>
                         </div>
 
@@ -43,7 +45,7 @@ export class FiveStems extends Component {
                                     <audio src="http://localhost:5000/Vocals" controls className="position-relative">
 
                                     </audio>
-
+                                    <DownloadButton/>
                                 </div>
                             </div>
 
@@ -58,6 +60,7 @@ export class FiveStems extends Component {
                                     <audio src="http://localhost:5000/Bass" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 
@@ -72,6 +75,7 @@ export class FiveStems extends Component {
                                     <audio src="http://localhost:5000/Drums" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
 
                                 </div>
                             </div>
@@ -87,6 +91,7 @@ export class FiveStems extends Component {
                                     <audio src="http://localhost:5000/Piano" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 
@@ -101,6 +106,7 @@ export class FiveStems extends Component {
                                     <audio src="http://localhost:5000/Other" controls className="position-relative">
 
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 

@@ -1,9 +1,9 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
-
 import './Home.css';
-
+import { HiOutlineDownload } from 'react-icons/hi';
+import DownloadButton from './DownloadButton';
 
 export class TwoStems extends Component {
     static displayName = TwoStems.name;
@@ -19,20 +19,20 @@ export class TwoStems extends Component {
             <div className="">
                 <Container>
                     <h1>Two Stems Below</h1>
+                    
                     <hr/>
                     <br/>
-
 
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <h5 className="">Original Audio File</h5>
+                                <h5 className="">Original Audio File </h5>
                             </div>
                             <div class="col-9">
                                 <audio src="http://localhost:5000/Original" controls className="position-relative">
-
+                                
                                 </audio>
-
+                               
                             </div>
                         </div>
 
@@ -49,8 +49,12 @@ export class TwoStems extends Component {
                                 <div class="col-9">
 
                                     <audio src="http://localhost:5000/Vocals" controls className="position-relative">
-
+                                
                                     </audio>
+                                   
+
+                                    {/* <button className="btn btn-default" id="downloadicon"><HiOutlineDownload/>     Download</button> */}
+                                    <DownloadButton/> 
                                 </div>
                             </div>
 
@@ -64,8 +68,9 @@ export class TwoStems extends Component {
                                 <div class="col-9">
                                     <audio src="http://localhost:5000/Instrumental" controls
                                            className="position-relative">
-
+                                       
                                     </audio>
+                                    <DownloadButton/>
                                 </div>
                             </div>
 

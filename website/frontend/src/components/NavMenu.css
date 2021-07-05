@@ -3,11 +3,9 @@
     margin: 20;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
     display: flex;
     justify-content: flex-end;
-    /* position:fixed;
-    width:100%; */
+    
 }
 
 li {
@@ -20,18 +18,34 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: rgb(124, 123, 123);
-    text-decoration: none;
+li a:hover{
+
+    color: rgb(124, 62, 51);
 }
 
 .navbar-brand {
-    /* background-color: rgb(94, 40, 40); */
-    /* margin-right: 900px; */
-    position: absolute;
+    position: fixed;
     left: 0px;
 
+}
+
+#nav1{
+    position: fixed;
+    right: 230px;
+    
+}
+
+#nav2{
+    position: fixed;
+    right: 73px;
+}
+
+#nav3{
+    position: fixed;
+    right: 0px;
+    
+    
 }

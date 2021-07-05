@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-// import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-// import { Link } from 'react-router-dom';
+
 import '../../css/styles.css';
 
-export class NavigationMenu extends Component {
-    static displayName = NavigationMenu.name;
+export class NavigationBar extends Component {
+    static displayName = NavigationBar.name;
 
     render() {
         return (

@@ -18,13 +18,15 @@ export class FiveStems extends Component {
                         Five Stems Below
                     </h1>
 
+                    <br/><br/>
+
                     <div className="container">
                         <div className="row">
                             <div className="col">
                                 <h5 className="">Original Audio File</h5>
                             </div>
                             <div className="col-9">
-                            <AudioPlayer name='Original'/>
+                                <AudioPlayer name='Original'/>
                             </div>
                         </div>
 
@@ -39,7 +41,7 @@ export class FiveStems extends Component {
                                     <h5 className="">Vocal</h5>
                                 </div>
                                 <div className="col-9">
-                        <AudioPlayer name='Vocals'/>
+                                    <AudioPlayer name='Vocals'/>
 
                                 </div>
                             </div>
@@ -52,7 +54,7 @@ export class FiveStems extends Component {
                                     <h5 className="">Bass</h5>
                                 </div>
                                 <div className="col-9">
-                        <AudioPlayer name='Bass'/>
+                                    <AudioPlayer name='Bass'/>
                                 </div>
                             </div>
 
@@ -64,7 +66,7 @@ export class FiveStems extends Component {
                                     <h5 className="">Drums</h5>
                                 </div>
                                 <div className="col-9">
-                        <AudioPlayer name='Drums'/>
+                                    <AudioPlayer name='Drums'/>
 
                                 </div>
                             </div>
@@ -77,7 +79,7 @@ export class FiveStems extends Component {
                                     <h5 className="">Piano</h5>
                                 </div>
                                 <div className="col-9">
-                        <AudioPlayer name='Piano'/>
+                                    <AudioPlayer name='Piano'/>
                                 </div>
                             </div>
 
@@ -89,7 +91,7 @@ export class FiveStems extends Component {
                                     <h5 className="">Instrumentals</h5>
                                 </div>
                                 <div className="col-9">
-                        <AudioPlayer name='Instrumental'/>
+                                    <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>
 

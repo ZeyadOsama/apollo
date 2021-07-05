@@ -1,6 +1,6 @@
 import React from 'react';
 import Routes from './Routes'
-import {NavigationMenu} from './js/base/NavigationMenu'
+import {NavigationBar} from './js/elements/NavigationBar'
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import './css/styles.css';
@@ -11,7 +11,7 @@ export default function App() {
         <div>
             <Router>
                 <div>
-                    <NavigationMenu/>
+                    <NavigationBar/>
                     <Routes/>
                 </div>
             </Router>

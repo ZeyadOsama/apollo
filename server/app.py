@@ -14,7 +14,7 @@ import subprocess
 import sys
 import wave
 
-from flask import Flask, request, send_file, Response
+from flask import Flask, request, send_file
 from flask_cors import CORS
 from pydub import AudioSegment
 from werkzeug.utils import secure_filename
@@ -24,7 +24,6 @@ currDir = os.path.dirname(os.path.realpath(__file__))
 rootDir = os.path.abspath(os.path.join(currDir, '..'))
 if rootDir not in sys.path:  # add parent dir to paths
     sys.path.append(rootDir)
-
 
 from apollo.engine.models.genre_classification.tagger import *
 
@@ -39,6 +38,10 @@ DIR_RESULTS = 'results/'
 DIR_STEM = DIR_RESULTS + 'stem/'
 DIR_SEP = DIR_STEM + 'audio/'
 DIR_PLOT = DIR_RESULTS + 'plot/'
+
+EXT_WAV = '.wav'
+EXT_MP3 = '.mp3'
+MIMETYPE = 'audio/wav'
 
 
 def setup_dirs():
@@ -133,106 +136,51 @@ def downloaded_file_tags():
         return send_file(DIR_PLOT + "PieChart.png", mimetype='image/png')
 
 
+def send_audio(name: str, wait: bool = True):
+    while wait:
+        if os.path.exists(DIR_SEP + name + EXT_WAV):
+            break
+    name = name + EXT_WAV
+    return send_file(
+        DIR_RESULTS + name,
+        mimetype=MIMETYPE,
+        as_attachment=True,
+        attachment_filename=name)
+
+
 @app.route("/Original")
 def stream_original():
-    def generate():
-        with open(DIR_RESULTS + "audio.wav", "rb") as fwav:
-            data = fwav.read(1024)
-            while data:
-                yield data
-                data = fwav.read(1024)
-
-    return Response(generate(), mimetype="audio/x-wav")
+    return send_audio('audio', wait=False)
 
 
 @app.route("/Vocals")
 def stream_vocal():
-    def generate():
-        while True:
-            if os.path.exists(DIR_SEP + "vocals.wav"):
-                break
-        with open(DIR_SEP + "vocals.wav", "rb") as fwav:
-            data = fwav.read(1024)
-            while data:
-                yield data
-                data = fwav.read(1024)
-
-    return Response(generate(), mimetype="audio/x-wav")
+    return send_audio('vocals')
 
 
 @app.route("/Instrumental")
 def stream_instruments():
-    def generate():
-        while True:
-            if os.path.exists(DIR_SEP + "accompaniment.wav"):
-                break
-        with open(DIR_SEP + "accompaniment.wav", "rb") as fwav:
-            data = fwav.read(1024)
-            while data:
-                yield data
-                data = fwav.read(1024)
-
-    return Response(generate(), mimetype="audio/x-wav")
+    return send_audio('accompaniment')
 
 
 @app.route("/Bass")
 def stream_bass():
-    def generate():
-        while True:
-            if os.path.exists(DIR_SEP + "bass.wav"):
-                break
-        with open(DIR_SEP + "bass.wav", "rb") as fwav:
-            data = fwav.read(1024)
-            while data:
-                yield data
-                data = fwav.read(1024)
-
-    return Response(generate(), mimetype="audio/x-wav")
+    return send_audio('bass')
 
 
 @app.route("/Drums")
 def stream_drums():
-    def generate():
-        while True:
-            if os.path.exists(DIR_SEP + "drums.wav"):
-                break
-        with open(DIR_SEP + "drums.wav", "rb") as fwav:
-            data = fwav.read(1024)
-            while data:
-                yield data
-                data = fwav.read(1024)
-
-    return Response(generate(), mimetype="audio/x-wav")
+    return send_audio('drums')
 
 
 @app.route("/Piano")
 def stream_piano():
-    def generate():
-        while True:
-            if os.path.exists(DIR_SEP + "piano.wav"):
-                break
-        with open(DIR_SEP + "piano.wav", "rb") as fwav:
-            data = fwav.read(1024)
-            while data:
-                yield data
-                data = fwav.read(1024)
-
-    return Response(generate(), mimetype="audio/x-wav")
+    return send_audio('piano')
 
 
 @app.route("/Other")
 def stream_other():
-    def generate():
-        while True:
-            if os.path.exists(DIR_SEP + "other.wav"):
-                break
-        with open(DIR_SEP + "other.wav", "rb") as fwav:
-            data = fwav.read(1024)
-            while data:
-                yield data
-                data = fwav.read(1024)
-
-    return Response(generate(), mimetype="audio/x-wav")
+    return send_audio('other')
 
 
 @app.after_request

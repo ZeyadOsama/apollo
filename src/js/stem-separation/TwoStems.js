@@ -24,13 +24,15 @@ export class TwoStems extends Component {
                         Two Stems Below
                     </h1>
 
+                    <br/><br/>
+
                     <div className="container">
                         <div className="row">
                             <div className="col">
                                 <h5 className="">Original Audio File</h5>
                             </div>
                             <div className="col-9">
-                            <AudioPlayer name='Original'/>
+                                <AudioPlayer name='Original'/>
 
                             </div>
                         </div>
@@ -44,8 +46,7 @@ export class TwoStems extends Component {
                                     <h5 className="">Vocal</h5>
                                 </div>
                                 <div className="col-9">
-
-                        <AudioPlayer name='Vocals'/>
+                                    <AudioPlayer name='Vocals'/>
                                 </div>
                             </div>
 
@@ -57,7 +58,7 @@ export class TwoStems extends Component {
                                     <h5 className="">Instrumental</h5>
                                 </div>
                                 <div className="col-9">
-                        <AudioPlayer name='Instrumental'/>
+                                    <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>
 

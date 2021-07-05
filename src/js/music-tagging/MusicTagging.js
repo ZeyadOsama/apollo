@@ -37,11 +37,6 @@ export class MusicTagging extends Component {
 
                     <br/><br/>
 
-                    {/*<div class="audio-container">*/}
-                    {/*    <audio controls>*/}
-                    {/*        <source src={this.url + "Original"} type="audio/mpeg"/>*/}
-                    {/*    </audio>*/}
-                    {/*</div>*/}
                     <AudioPlayer name='Original'/>
 
                     <div>
@@ -51,6 +46,8 @@ export class MusicTagging extends Component {
                                  alt="result"/>
                         </Jumbotron>
                     </div>
+
+                    <br/><br/>
 
                 </div>
             </Container>

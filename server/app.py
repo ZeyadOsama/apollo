@@ -19,13 +19,12 @@ from flask_cors import CORS
 from pydub import AudioSegment
 from werkzeug.utils import secure_filename
 
-currDir = os.path.dirname(os.path.realpath(__file__))
-# webDir = os.path.abspath(os.path.join(currDir, '..'))
-rootDir = os.path.abspath(os.path.join(currDir, '..'))
-if rootDir not in sys.path:  # add parent dir to paths
-    sys.path.append(rootDir)
-
 from apollo.engine.models.genre_classification.tagger import *
+
+dir_curr = os.path.dirname(os.path.realpath(__file__))
+dir_root = os.path.abspath(os.path.join(dir_curr, '..'))
+if dir_root not in sys.path:
+    sys.path.append(dir_root)
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')
@@ -128,7 +127,6 @@ def downloaded_file_five():
 @app.route('/MusicTags')
 def downloaded_file_tags():
     setup_dirs()
-
     if request.method == 'GET':
         if os.path.exists(DIR_PLOT + "PieChart.png"):
             os.remove(DIR_PLOT + "PieChart.png")
@@ -136,21 +134,20 @@ def downloaded_file_tags():
         return send_file(DIR_PLOT + "PieChart.png", mimetype='image/png')
 
 
-def send_audio(name: str, wait: bool = True):
-    while wait:
-        if os.path.exists(DIR_SEP + name + EXT_WAV):
-            break
+def send_audio(name: str, f_dir: str = DIR_SEP):
     name = name + EXT_WAV
-    return send_file(
-        DIR_RESULTS + name,
-        mimetype=MIMETYPE,
-        as_attachment=True,
-        attachment_filename=name)
+    while True:
+        if os.path.exists(f_dir + name):
+            break
+    return send_file(f_dir + name,
+                     mimetype=MIMETYPE,
+                     as_attachment=True,
+                     attachment_filename=name)
 
 
 @app.route("/Original")
 def stream_original():
-    return send_audio('audio', wait=False)
+    return send_audio('audio', f_dir=DIR_RESULTS)
 
 
 @app.route("/Vocals")

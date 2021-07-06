@@ -1,10 +1,10 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import {AudioPlayer} from "../elements/AudioPlayer";
-import '../../css/styles.css';
-import {LoadingZone} from "../elements/LoadingZone";
 import axios from "axios";
+import {AudioPlayer} from "../elements/AudioPlayer";
+import {LoadingZone} from "../elements/LoadingZone";
+import '../../css/styles.css';
 
 export class FourStems extends Component {
 
@@ -55,31 +55,32 @@ export class FourStems extends Component {
                             }
 
                             <div>
-                                <h5>Vocals</h5>
-                                <AudioPlayer name='Vocals'/>
+                                <div>
+                                    <h5>Vocals</h5>
+                                    <AudioPlayer name='Vocals'/>
+                                </div>
+
+                                <br/>
+
+                                <div>
+                                    <h5>Bass</h5>
+                                    <AudioPlayer name='Bass'/>
+                                </div>
+
+                                <br/>
+
+                                <div>
+                                    <h5>Drums</h5>
+                                    <AudioPlayer name='Drums'/>
+                                </div>
+
+                                <br/>
+
+                                <div>
+                                    <h5>Other</h5>
+                                    <AudioPlayer name='Other'/>
+                                </div>
                             </div>
-
-                            <br/>
-
-                            <div>
-                                <h5>Bass</h5>
-                                <AudioPlayer name='Bass'/>
-                            </div>
-
-                            <br/>
-
-                            <div>
-                                <h5>Drums</h5>
-                                <AudioPlayer name='Drums'/>
-                            </div>
-
-                            <br/>
-
-                            <div>
-                                <h5>Other</h5>
-                                <AudioPlayer name='Other'/>
-                            </div>
-
                         </Jumbotron>
 
                     </div>

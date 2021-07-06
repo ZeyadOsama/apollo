@@ -1,10 +1,10 @@
 ﻿import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import {AudioPlayer} from "../elements/AudioPlayer";
-import '../../css/styles.css';
 import axios from "axios";
+import {AudioPlayer} from "../elements/AudioPlayer";
 import {LoadingZone} from "../elements/LoadingZone";
+import '../../css/styles.css';
 
 export class TwoStems extends Component {
 

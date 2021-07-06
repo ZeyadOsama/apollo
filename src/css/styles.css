@@ -128,6 +128,10 @@ li a:hover {
     float: left;
 }
 
+.margin-med {
+    margin: 10rem;
+}
+
 .center {
     text-align: center;
     margin: auto;

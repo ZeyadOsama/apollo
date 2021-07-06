@@ -4,6 +4,7 @@ import '../../css/styles.css';
 import axios from "axios";
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import {AudioPlayer} from "../elements/AudioPlayer";
+import {LoadingZone} from "../elements/LoadingZone";
 
 
 export class MusicTagging extends Component {
@@ -16,18 +17,28 @@ export class MusicTagging extends Component {
     }
 
     componentDidMount() {
-        axios.get(this.url + 'MusicTags', {responseType: 'arraybuffer'}).then(resp => {
-            const base64 = btoa(
-                new Uint8Array(resp.data).reduce(
-                    (data, byte) => data + String.fromCharCode(byte),
-                    '',
-                ),
-            );
-            this.setState({source: "data:;base64," + base64});
+        this.setState({loading: true}, () => {
+            axios
+                .get(this.url + 'MusicTags', {
+                    responseType: 'arraybuffer'
+                })
+                .then(resp => {
+                    const base64 = btoa(
+                        new Uint8Array(resp.data).reduce(
+                            (data, byte) => data + String.fromCharCode(byte),
+                            '',
+                        ),
+                    );
+                    this.setState({
+                        loading: false,
+                        data: "data:;base64," + base64
+                    });
+                });
         });
     }
 
     render() {
+        const {data, loading} = this.state;
         return (
             <Container>
                 <div className="animation sequence fadeInBottom-narrow">
@@ -43,9 +54,15 @@ export class MusicTagging extends Component {
 
                     <div>
                         <Jumbotron>
-                            <img className="center"
-                                 src={this.state.source}
-                                 alt="result"/>
+                            {loading ?
+                                <div className='margin-med'>
+                                    <LoadingZone/>
+                                </div>
+                                :
+                                <img className="center"
+                                     src={data}
+                                     alt="result"/>
+                            }
                         </Jumbotron>
                     </div>
 

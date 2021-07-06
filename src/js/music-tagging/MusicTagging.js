@@ -39,6 +39,8 @@ export class MusicTagging extends Component {
 
                     <AudioPlayer name='Original'/>
 
+                    <br/>
+
                     <div>
                         <Jumbotron>
                             <img className="center"

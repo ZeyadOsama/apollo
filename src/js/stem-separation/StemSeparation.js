@@ -44,7 +44,7 @@ export class StemSeparation extends Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="row">
-                                        <div className="meh">
+                                        <div className="flex-center">
 
                                             <div className="col-md-4">
                                                 <button id="clickable" className="btn btn-outline-secondary btn-lg"

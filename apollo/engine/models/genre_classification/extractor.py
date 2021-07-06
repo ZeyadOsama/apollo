@@ -1,10 +1,10 @@
 import os
 
 import librosa
+import matplotlib as plt
 import numpy as np
 import tensorflow as tf
 from matplotlib.figure import Figure
-import matplotlib as plt
 
 from apollo.engine.models.genre_classification import configuration as config
 from apollo.engine.models.genre_classification import models

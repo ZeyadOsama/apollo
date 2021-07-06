@@ -9,9 +9,7 @@ export class AudioPlayer extends Component {
     constructor(props) {
         super(props);
         this.audioPlayerRef = React.createRef();
-        this.className = props.className
         this.name = props.name;
-        console.log("INST " + this.name);
         this.url = process.env.APP_URL || 'http://localhost:5000/';
     }
 

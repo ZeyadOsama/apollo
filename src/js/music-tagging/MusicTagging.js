@@ -3,6 +3,7 @@ import {Container} from 'reactstrap';
 import '../../css/styles.css';
 import axios from "axios";
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import {AudioPlayer} from "../elements/AudioPlayer";
 
 
 export class MusicTagging extends Component {
@@ -29,26 +30,26 @@ export class MusicTagging extends Component {
     render() {
         return (
             <Container>
-                <div class="animation sequence fadeInBottom-narrow">
-                    <h1 class="title">
+                <div className="animation sequence fadeInBottom-narrow">
+                    <h1 className="title">
                         Music Tagging
                     </h1>
 
                     <br/><br/>
 
-                    <div class="audio-container">
-                        <audio controls>
-                            <source src={this.url + "Original"} type="audio/mpeg"/>
-                        </audio>
-                    </div>
+                    <AudioPlayer name='Original'/>
+
+                    <br/>
 
                     <div>
                         <Jumbotron>
-                            <img class="center"
+                            <img className="center"
                                  src={this.state.source}
                                  alt="result"/>
                         </Jumbotron>
                     </div>
+
+                    <br/><br/>
 
                 </div>
             </Container>

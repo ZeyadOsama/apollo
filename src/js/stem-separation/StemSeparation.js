@@ -35,35 +35,35 @@ export class StemSeparation extends Component {
             <Container>
                 <div className="animation sequence fadeInBottom-narrow">
 
-                    <h1 class="title">
+                    <h1 className="title">
                         Stem Separation
                     </h1>
 
-                    <div class="text-center">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="meh">
+                    <div className="text-center">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="row">
+                                        <div className="flex-center">
 
-                                            <div class="col-md-4">
-                                                <button id="clickable" class="btn btn-outline-secondary btn-lg"
+                                            <div className="col-md-4">
+                                                <button id="clickable" className="btn btn-outline-secondary btn-lg"
                                                         onClick={this.TwoStems}>
                                                     <h5>Two Stems Separation</h5>
                                                     <h6>Vocal & Instrumentals</h6>
                                                 </button>
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <button id="clickable" class="btn btn-outline-secondary btn-lg"
+                                            <div className="col-md-4">
+                                                <button id="clickable" className="btn btn-outline-secondary btn-lg"
                                                         onClick={this.FourStems}>
                                                     <h5>Four Stems Separation</h5>
                                                     <h6>Vocal, Bass, Drums & Instrumentals</h6>
                                                 </button>
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <button id="clickable" class="btn btn-outline-secondary btn-lg"
+                                            <div className="col-md-4">
+                                                <button id="clickable" className="btn btn-outline-secondary btn-lg"
                                                         onClick={this.FiveStems}>
                                                     <h5>Five Stems Separation</h5>
                                                     <h6>Vocal, Bass, Drums, Piano & Instrumentals</h6>

@@ -7,39 +7,39 @@ export class howItWorks extends Component {
     render() {
         return (
             <Container>
-                <div class="animation sequence fadeInBottom-narrow">
+                <div className="animation sequence fadeInBottom-narrow">
 
-                    <h1 class="title">
+                    <h1 className="title">
                         How It Works?
                     </h1>
 
-                    <div class="shp-block">
-                        <h5 class="subheader">
+                    <div className="shp-block">
+                        <h5 className="subheader">
                             1. Attach.
                         </h5>
-                        <p class="paragraph">
+                        <p className="paragraph">
                             First thing first, in the home page, you shall find a file attachment box, in which you
                             could attach an audio file that you want to process it.
                         </p>
                     </div>
 
-                    <div class="shp-block">
-                        <h5 class="subheader">
+                    <div className="shp-block">
+                        <h5 className="subheader">
                             2. Choose.
                         </h5>
-                        <p class="paragraph">
+                        <p className="paragraph">
                             After attaching your audio file, you'll be provided by two options, one in which is the stem
                             separation option, whereas the other is the music tagging option; now choose what you'd like
                             to do with your audio file.
                         </p>
                     </div>
 
-                    <div class="shp-block row">
-                        <div class="column">
-                            <h5 class="subheader">
+                    <div className="shp-block row">
+                        <div className="column">
+                            <h5 className="subheader">
                                 3.1. Stem Separation?
                             </h5>
-                            <p class="paragraph">
+                            <p className="paragraph">
                                 So now that you chose the stem separation option, another option will be provided to
                                 you.
                                 Variety of stem separation options are offered; two, four and five stems separations are
@@ -48,11 +48,11 @@ export class howItWorks extends Component {
                             </p>
                         </div>
 
-                        <div class="column">
-                            <h5 class="subheader">
+                        <div className="column">
+                            <h5 className="subheader">
                                 3.2. Music Tagging?
                             </h5>
-                            <p class="paragraph">
+                            <p className="paragraph">
                                 Or you decided to choose the music tagging option. Results shall then appear after
                                 choosing
                                 your desired option

@@ -23,17 +23,10 @@ audio {
 
 ul {
     list-style-type: none;
+    margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.20);
-    display: flex;
-    justify-content: flex-end;
-    /* position:fixed;
-    width:100%; */
-}
-
-li {
-    float: left;
 }
 
 li a {
@@ -50,6 +43,17 @@ li a:hover {
     text-decoration: none;
 }
 
+.font-lighter {
+    font-weight: lighter;
+}
+
+.font-normal {
+    font-weight: normal;
+}
+
+.font-bold {
+    font-weight: bold;
+}
 
 .footer {
     position: fixed;
@@ -116,9 +120,30 @@ li a:hover {
     text-align: center;
 }
 
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
 .center {
+    text-align: center;
     margin: auto;
     width: 100%;
+}
+
+.center-vertical {
+    text-align: center;
+    margin: auto 0;
+    height: 100%;
+}
+
+.center-horizontal {
+    text-align: center;
+    margin: 0 auto;
+    height: 100%;
 }
 
 .transparent {
@@ -151,42 +176,6 @@ li a:hover {
     background-color: rgba(255, 255, 255, 0);
 }
 
-/* .btn-light {
-    position: relative;
-    transition: .5s ease;
-    top: 200px;
-    left: 420px;
-    right: 440px;
-    bottom: -191px;
-}
-
-.btn-primary {
-    position: relative;
-    top: 200px;
-    left: 100px;
-
-
-}
-
-.btn-secondary {
-    position: relative;
-    top: 200px;
-    left: 180px;
-}
-
-
-.audio-element1 {
-    position: relative;
-    top: 10px;
-    left: 80px;
-}
-
-.btn-info {
-    position: relative;
-    top: 200px;
-    left: 800px;
-}*/
-
 .btn-secondary {
     background-color: white;
     border-radius: 20px;
@@ -195,21 +184,17 @@ li a:hover {
 }
 
 .btn-outline-secondary {
-    /* border-radius: 20px; */
-    /* border: 2px solid #887e7e; */
     color: rgb(201, 39, 88);
 
 
 }
 
 .jumbotron {
-    margin: 15px 30px 0px 30px;
     border-radius: 10px;
     background: rgba(36, 33, 35, 0.418);
     opacity: 0.8;
     border-color: black;
     padding: 20px;
-
 }
 
 #clickable {
@@ -230,7 +215,7 @@ li a:hover {
     background-color: rgba(255, 255, 255, 0.226);
 }
 
-.meh {
+.flex-center {
     display: flex;
     justify-content: center;
 }

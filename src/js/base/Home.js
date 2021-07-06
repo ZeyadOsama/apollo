@@ -36,12 +36,13 @@ export class Home extends Component {
 
                     <br/><br/>
 
-                    <form className="container-33 md-form">
+                    <form className="container-33 md-form font-lighter">
 
-                        <input className="container-100 form-control btn btn-outline-light"
+                        <input className="container-100 form-control btn btn-outline-light text-uppercase font-lighter"
                                name='file'
                                type="file"
                                required="required"
+                               accept=".mp3,.wav"
                                onChange={this.onFileChange}/>
 
                         <br/><br/>

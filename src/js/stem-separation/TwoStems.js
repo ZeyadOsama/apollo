@@ -63,7 +63,10 @@ export class TwoStems extends Component {
                             </div>
 
                         </Jumbotron>
+                        
                     </div>
+
+                    <br/><br/>
 
                 </div>
             </Container>

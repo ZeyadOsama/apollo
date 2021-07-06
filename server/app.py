@@ -12,7 +12,6 @@ import os
 import shutil
 import subprocess
 import sys
-import wave
 
 from flask import Flask, request, send_file
 from flask_cors import CORS
@@ -40,7 +39,8 @@ DIR_PLOT = DIR_RESULTS + 'plot/'
 
 EXT_WAV = '.wav'
 EXT_MP3 = '.mp3'
-MIMETYPE = 'audio/wav'
+EXT_IMG = '.png'
+MIMETYPE_AUDIO = 'audio/wav'
 
 
 def setup_dirs():
@@ -66,15 +66,13 @@ def setup_dirs():
 @app.route('/', methods=['GET', 'POST'])
 def uploaded_file():
     setup_dirs()
-
     dst = DIR_RESULTS + RESULT_FILE
-
     if request.method == 'POST':
         f = request.files["myFile"]
         path = "audio_dataset/" + f.filename
         print(f.filename)
         if ".mp3" in f.filename:
-            # convert mp3 to wav
+            # Convert .mp3 to .wav
             if os.path.exists(dst):
                 os.remove(dst)
             secure = DIR_RESULTS + secure_filename(f.filename)
@@ -82,7 +80,6 @@ def uploaded_file():
             os.rename(secure, DIR_RESULTS + RESULT_MP3)
             sound = AudioSegment.from_mp3(DIR_RESULTS + RESULT_MP3)
             sound.export(dst, format="wav")
-            # play(sound)
         elif "recorded_audio" in f.filename:
             subprocess.call(['ffmpeg', '-i', path, dst])
         else:
@@ -92,46 +89,12 @@ def uploaded_file():
     return "done!"
 
 
-def read_wav_file(filename):
-    with wave.open(filename, 'rb') as w:
-        rate = w.getframerate()
-        frames = w.getnframes()
-        dur = frames / float(rate)
-    return dur
-
-
-@app.route('/GetTwoStems')
-def downloaded_file_two():
+def separate(num: int):
     if os.path.exists(DIR_STEM + "audio/"):
         shutil.rmtree(DIR_STEM + "audio/")
-    os.system("spleeter separate -i {}audio.wav -p spleeter:2stems -B tensorflow -o {}".format(DIR_RESULTS, DIR_STEM))
+    os.system(
+        "spleeter separate -i {}audio.wav -p spleeter:{}stems -B tensorflow -o {}".format(DIR_RESULTS, num, DIR_STEM))
     return "done!"
-
-
-@app.route('/GetFourStems')
-def downloaded_file_four():
-    if os.path.exists(DIR_STEM + "audio/"):
-        shutil.rmtree(DIR_STEM + "audio/")
-    os.system("spleeter separate -i {}audio.wav -p spleeter:4stems -B tensorflow -o {}".format(DIR_RESULTS, DIR_STEM))
-    return "done!"
-
-
-@app.route('/GetFiveStems')
-def downloaded_file_five():
-    if os.path.exists(DIR_STEM + "audio/"):
-        shutil.rmtree(DIR_STEM + "audio/")
-    os.system("spleeter separate -i {}audio.wav -p spleeter:5stems -B tensorflow -o {}".format(DIR_RESULTS, DIR_STEM))
-    return "done!"
-
-
-@app.route('/MusicTags')
-def downloaded_file_tags():
-    setup_dirs()
-    if request.method == 'GET':
-        if os.path.exists(DIR_PLOT + "PieChart.png"):
-            os.remove(DIR_PLOT + "PieChart.png")
-        extractor(DIR_RESULTS + RESULT_MP3, DIR_PLOT)
-        return send_file(DIR_PLOT + "PieChart.png", mimetype='image/png')
 
 
 def send_audio(name: str, f_dir: str = DIR_SEP):
@@ -140,44 +103,70 @@ def send_audio(name: str, f_dir: str = DIR_SEP):
         if os.path.exists(f_dir + name):
             break
     return send_file(f_dir + name,
-                     mimetype=MIMETYPE,
+                     mimetype=MIMETYPE_AUDIO,
                      as_attachment=True,
                      attachment_filename=name)
 
 
+@app.route('/GetTwoStems')
+def separate_two():
+    return separate(2)
+
+
+@app.route('/GetFourStems')
+def separate_four():
+    return separate(4)
+
+
+@app.route('/GetFiveStems')
+def separate_five():
+    return separate(5)
+
+
 @app.route("/Original")
-def stream_original():
+def send_original():
     return send_audio('audio', f_dir=DIR_RESULTS)
 
 
 @app.route("/Vocals")
-def stream_vocal():
+def send_vocal():
     return send_audio('vocals')
 
 
 @app.route("/Instrumental")
-def stream_instruments():
+def send_instruments():
     return send_audio('accompaniment')
 
 
 @app.route("/Bass")
-def stream_bass():
+def send_bass():
     return send_audio('bass')
 
 
 @app.route("/Drums")
-def stream_drums():
+def send_drums():
     return send_audio('drums')
 
 
 @app.route("/Piano")
-def stream_piano():
+def send_piano():
     return send_audio('piano')
 
 
 @app.route("/Other")
-def stream_other():
+def send_other():
     return send_audio('other')
+
+
+@app.route('/MusicTags')
+def music_tag():
+    setup_dirs()
+    if request.method == 'GET':
+        name = 'PieChart' + EXT_IMG
+        if os.path.exists(DIR_PLOT + name):
+            os.remove(DIR_PLOT + name)
+        extractor(DIR_RESULTS + RESULT_MP3, DIR_PLOT)
+        return send_file(DIR_PLOT + name, mimetype='image/png')
 
 
 @app.after_request
@@ -194,4 +183,4 @@ def add_header(r):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)

@@ -5,21 +5,27 @@ import '../../css/audio.css';
 import '../../css/animation.css'
 
 export class AudioPlayer extends Component {
+
     constructor(props) {
         super(props);
+        this.audioPlayerRef = React.createRef();
         this.className = props.className
         this.name = props.name;
+        console.log("INST " + this.name);
         this.url = process.env.APP_URL || 'http://localhost:5000/';
     }
 
     componentDidMount() {
-        const audioPlayer = document.querySelector(".audio-player");
+        const audioPlayer = this.audioPlayerRef;
         const audio = new Audio(this.url + this.name);
 
+        /**
+         * @function Audio event listener.
+         */
         audio.addEventListener(
             "loadeddata",
             () => {
-                audioPlayer.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
+                audioPlayer.current.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
                 audio.volume = .75;
             },
             false
@@ -29,20 +35,11 @@ export class AudioPlayer extends Component {
          * @function Click on timeline to skip around.
          * @type {Element}
          */
-        const timeline = audioPlayer.querySelector(".timeline");
+        const timeline = audioPlayer.current.querySelector(".timeline");
         timeline.addEventListener("click", e => {
-            const rect = e.currentTarget.getBoundingClientRect(),
-                offsetX = e.clientX - rect.left;
-
+            const rect = e.currentTarget.getBoundingClientRect(), offsetX = e.clientX - rect.left;
             const timelineWidth = window.getComputedStyle(timeline).width;
-
             audio.currentTime = parseInt((offsetX / parseInt(timelineWidth) * audio.duration).toString());
-
-            console.dir(audio);
-            console.log(audio.duration)
-            console.log(audio.currentTime)
-            console.log(parseInt((offsetX / parseInt(timelineWidth) * audio.duration).toString()))
-
         }, false);
 
 
@@ -50,21 +47,21 @@ export class AudioPlayer extends Component {
          * @function Click volume slider to change volume.
          * @type {Element}
          */
-        const volumeSlider = audioPlayer.querySelector(".controls .volume-slider");
+        const volumeSlider = audioPlayer.current.querySelector(".controls .volume-slider");
         volumeSlider.addEventListener('click', e => {
             const sliderWidth = window.getComputedStyle(volumeSlider).width;
             const newVolume = e.offsetX / parseInt(sliderWidth);
             audio.volume = newVolume;
-            audioPlayer.querySelector(".controls .volume-percentage").style.width = newVolume * 100 + '%';
+            audioPlayer.current.querySelector(".controls .volume-percentage").style.width = newVolume * 100 + '%';
         }, false)
 
         /**
          * @function Check audio percentage and update time accordingly.
          */
         setInterval(() => {
-            const progressBar = audioPlayer.querySelector(".progress");
+            const progressBar = audioPlayer.current.querySelector(".progress");
             progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-            audioPlayer.querySelector(".time .current").textContent = getTimeCodeFromNum(audio.currentTime);
+            audioPlayer.current.querySelector(".time .current").textContent = getTimeCodeFromNum(audio.currentTime);
         }, 500);
 
 
@@ -72,7 +69,7 @@ export class AudioPlayer extends Component {
          * @function Toggle between playing and pausing on button click.
          * @type {Element}
          */
-        const playBtn = audioPlayer.querySelector(".controls .toggle-play");
+        const playBtn = audioPlayer.current.querySelector(".controls .toggle-play");
         playBtn.addEventListener(
             "click",
             () => {
@@ -89,8 +86,8 @@ export class AudioPlayer extends Component {
             false
         );
 
-        audioPlayer.querySelector(".volume-button").addEventListener("click", () => {
-            const volumeEl = audioPlayer.querySelector(".volume-container .volume");
+        audioPlayer.current.querySelector(".volume-button").addEventListener("click", () => {
+            const volumeEl = audioPlayer.current.querySelector(".volume-container .volume");
             audio.muted = !audio.muted;
             if (audio.muted) {
                 volumeEl.classList.remove("icono-volumeMedium");
@@ -121,7 +118,7 @@ export class AudioPlayer extends Component {
 
     render() {
         return (
-            <div className="audio-player center">
+            <div ref={this.audioPlayerRef} className="audio-player center">
                 <div className="timeline">
                     <div className="progress"/>
                 </div>

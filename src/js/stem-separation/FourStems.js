@@ -73,17 +73,18 @@ export class FourStems extends Component {
 
                             <div className="row">
                                 <div className="col">
-                                    <h5 className="">Instrumentals</h5>
+                                    <h5 className="">Other</h5>
                                 </div>
                                 <div className="col-9">
-                                    <AudioPlayer name='Instrumentals'/>
+                                    <AudioPlayer name='Other'/>
                                 </div>
                             </div>
 
                         </Jumbotron>
 
-
                     </div>
+
+                    <br/><br/>
 
                 </div>
             </Container>

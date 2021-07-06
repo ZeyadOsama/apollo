@@ -50,6 +50,17 @@ li a:hover {
     text-decoration: none;
 }
 
+.font-lighter {
+    font-weight: lighter;
+}
+
+.font-normal {
+    font-weight: normal;
+}
+
+.font-bold {
+    font-weight: bold;
+}
 
 .footer {
     position: fixed;

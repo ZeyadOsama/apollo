@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Container} from 'react-bootstrap';
 
 export class howItWorks extends Component {
-    static displayName = howItWorks.name;
-
     render() {
         return (
             <Container>
@@ -65,4 +63,3 @@ export class howItWorks extends Component {
         );
     }
 }
-

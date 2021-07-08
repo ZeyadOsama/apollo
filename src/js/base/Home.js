@@ -13,16 +13,21 @@ export class Home extends Component {
     }
 
     onFileChange = event => {
-        this.setState({selectedFile: event.target.files[0], source: event.target.files[0].name});
+        this.setState({
+            selectedFile: event.target.files[0],
+            source: event.target.files[0].name
+        });
     };
 
     onFileUpload = () => {
-        const formData = new FormData();
-        formData.append("myFile", this.state.selectedFile, this.state.selectedFile.name);
-        console.log(this.state.selectedFile.name);
-        const url = process.env.APP_URL || 'http://localhost:5000/';
-        axios.post(url, formData);
-        history.push("/Tools");
+        if (this.state.selectedFile != null) {
+            const formData = new FormData();
+            formData.append("myFile", this.state.selectedFile, this.state.selectedFile.name);
+            console.log(this.state.selectedFile.name);
+            const url = process.env.APP_URL || 'http://localhost:5000/';
+            axios.post(url, formData);
+            history.push("/Tools");
+        }
     }
 
     render() {

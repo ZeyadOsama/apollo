@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {Container} from "react-bootstrap";
 
 export class FAQ extends Component {
-    static displayName = FAQ.name;
-
     render() {
         return (
             <Container>

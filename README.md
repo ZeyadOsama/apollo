@@ -34,8 +34,7 @@ Hence, tags could be used for music recommendation and discovery.
 
 ![ConfussionMatrix](https://user-images.githubusercontent.com/30150819/124938446-94752f00-e008-11eb-8faf-d5be4a6c76b6.png)
 
-https://user-images.githubusercontent.com/30150819/124937353-9985ae80-e007-11eb-9304-dbc7a1691ba9.mp4
-
+https://user-images.githubusercontent.com/30150819/124954275-318a9480-e016-11eb-86d0-f0dc4a962a1b.mp4
 
 ## How To Run
 

@@ -47,47 +47,47 @@ export class TwoStems extends Component {
                     <div className="container">
 
                         {loading ?
-                        <Jumbotron>
+                            <Jumbotron>
                                 <div className='margin-med'>
                                     <LoadingZone/>
                                 </div>
-                                                    </Jumbotron>
-                            :
-                        <Jumbotron>
-                            <div>
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col">
-                                            <h5>Vocals</h5>
-                                        </div>
-                                        <div className="col">
-                                            <div className='float-right'>
-                                                <DownloadButton file='Vocals'/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <AudioPlayer name='Vocals'/>
-                                </div>
-
-                                <br/>
-
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="col">
-                                            <h5>Instrumental</h5>
-                                        </div>
-                                        <div className="col">
-                                            <div className='float-right'>
-                                                <DownloadButton file='Instrumental'/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <AudioPlayer name='Instrumental'/>
-                                </div>
-                            </div>
                             </Jumbotron>
-                            }
+                            :
+                            <Jumbotron>
+                                <div>
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col">
+                                                <h5>Vocals</h5>
+                                            </div>
+                                            <div className="col">
+                                                <div className='float-right'>
+                                                    <DownloadButton file='Vocals'/>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <AudioPlayer name='Vocals'/>
+                                    </div>
+
+                                    <br/>
+
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col">
+                                                <h5>Instrumental</h5>
+                                            </div>
+                                            <div className="col">
+                                                <div className='float-right'>
+                                                    <DownloadButton file='Instrumental'/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <AudioPlayer name='Instrumental'/>
+                                    </div>
+                                </div>
+                            </Jumbotron>
+                        }
+                    </div>
 
                     <br/><br/>
 

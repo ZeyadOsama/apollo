@@ -38,7 +38,9 @@ https://user-images.githubusercontent.com/30150819/124954275-318a9480-e016-11eb-
 
 ## How To Run
 
-You'll need to install `Anaconda` and `Heroku CLI` before running the following script.
+You'll need to install [`Anaconda`](https://www.anaconda.com/products/individual),
+[`Node.js`](https://nodejs.org/en/download/) and [`Heroku CLI`](https://devcenter.heroku.com/articles/heroku-cli) before
+running the following script.
 
 ```bash
 git clone https://github.com/ZeyadOsama/apollo.git
@@ -46,6 +48,26 @@ cd apollo
 conda env create --file environment.yml
 conda activate apollo
 heroku local 
+```
+
+If you don't want to use `Heroku CLI`, you'll run the first script individually, then open two separate terminals and
+run each of the following scripts in a terminal.
+
+```bash
+git clone https://github.com/ZeyadOsama/apollo.git
+cd apollo
+conda env create --file environment.yml
+```
+
+```bash
+conda activate apollo
+npm start
+```
+
+```bash
+conda activate apollo
+cd server
+flask run
 ```
 
 ## Changelog

@@ -4,6 +4,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import axios from "axios";
 import {AudioPlayer} from "../elements/AudioPlayer";
 import {LoadingZone} from "../elements/LoadingZone";
+import {DownloadButton} from "../elements/DownloadButton";
 import '../../css/styles.css';
 
 export class TwoStems extends Component {
@@ -46,23 +47,27 @@ export class TwoStems extends Component {
                     <div className="container">
 
                         <Jumbotron>
-                            {loading ?
-                                <div className='margin-med'>
-                                    <LoadingZone/>
-                                </div>
-                                :
-                                null
-                            }
+                            {/*{loading ?*/}
+                            {/*    <div className='margin-med'>*/}
+                            {/*        <LoadingZone/>*/}
+                            {/*    </div>*/}
+                            {/*    :*/}
+                            {/*    null*/}
+                            {/*}*/}
 
                             <div>
                                 <div>
+                                <div>
+                                    <DownloadButton/>
                                     <h5>Vocals</h5>
+                                </div>
                                     <AudioPlayer name='Vocals'/>
                                 </div>
 
                                 <br/>
 
                                 <div>
+                                    <DownloadButton/>
                                     <h5>Instrumental</h5>
                                     <AudioPlayer name='Instrumental'/>
                                 </div>

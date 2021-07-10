@@ -223,3 +223,10 @@ li a:hover {
     display: flex;
     justify-content: center;
 }
+
+#download-icon.btn.btn-default {
+    float: right;
+    display: flex;
+    color: white;
+    font-size: large;
+}

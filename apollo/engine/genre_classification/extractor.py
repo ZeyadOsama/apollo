@@ -14,7 +14,6 @@ tf.compat.v1.disable_eager_execution()
 
 
 def batch_data(audio_file, n_frames, overlap):
-
     # compute the log-mel spectrogram with librosa
     audio, sr = librosa.load(audio_file, sr=config.SR)
     audio_rep = librosa.feature.melspectrogram(y=audio,
@@ -42,7 +41,6 @@ def batch_data(audio_file, n_frames, overlap):
 
 def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, input_overlap=False,
               extract_features=True):
-
     # select model
     labels = config.MSD_LABELS
     num_classes = len(labels)
@@ -130,7 +128,6 @@ def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, inp
 
 
 def plotter(input_length, taggram, tags, output_folder, file_name):
-
     plt.rcParams['text.color'] = 'white'
     fontsize = 12  # set figures font size
 

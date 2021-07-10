@@ -7,7 +7,6 @@ from apollo.engine.genre_classification.extractor import extractor
 
 def top_tags(file_name, model='MSD_musicnn', topN=5, input_length=10, input_overlap=False, print_tags=True,
              save_tags=False):
-
     taggram, tags = extractor(file_name, model=model, input_length=input_length, input_overlap=input_overlap,
                               extract_features=False)
     tags_likelihood_mean = np.mean(taggram, axis=0)

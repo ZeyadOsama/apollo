@@ -45,15 +45,14 @@ export class TwoStems extends Component {
 
                     <div className="container">
 
+                        {loading ?
                         <Jumbotron>
-                            {loading ?
                                 <div className='margin-med'>
                                     <LoadingZone/>
                                 </div>
-                                :
-                                null
-                            }
-
+                                                    </Jumbotron>
+                            :
+                        <Jumbotron>
                             <div>
                                 <div>
                                     <h5>Vocals</h5>
@@ -67,9 +66,9 @@ export class TwoStems extends Component {
                                     <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>
-                        </Jumbotron>
-
-                    </div>
+                            </Jumbotron>
+                            }
+                                                </div>
 
                     <br/><br/>
 

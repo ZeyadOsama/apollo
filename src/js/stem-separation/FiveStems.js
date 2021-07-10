@@ -45,15 +45,14 @@ export class FiveStems extends Component {
 
                     <div className="container">
 
+                        {loading ?
                         <Jumbotron>
-                            {loading ?
                                 <div className='margin-med'>
                                     <LoadingZone/>
                                 </div>
+                        </Jumbotron>
                                 :
-                                null
-                            }
-
+                            <Jumbotron>
                             <div>
                                 <div>
                                     <h5>Vocals</h5>
@@ -88,8 +87,8 @@ export class FiveStems extends Component {
                                     <AudioPlayer name='Other'/>
                                 </div>
                             </div>
-
                         </Jumbotron>
+                            }
 
                     </div>
 

@@ -23,8 +23,10 @@ export class AudioPlayer extends Component {
         audio.addEventListener(
             "loadeddata",
             () => {
-                audioPlayer.current.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
-                audio.volume = .75;
+                if(audioPlayer.current) {
+                    audioPlayer.current.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
+                    audio.volume = .75;
+                }
             },
             false
         );
@@ -57,9 +59,11 @@ export class AudioPlayer extends Component {
          * @function Check audio percentage and update time accordingly.
          */
         setInterval(() => {
+            if (audioPlayer.current) {
             const progressBar = audioPlayer.current.querySelector(".progress");
             progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
             audioPlayer.current.querySelector(".time .current").textContent = getTimeCodeFromNum(audio.currentTime);
+        }
         }, 500);
 
 

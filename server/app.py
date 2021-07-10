@@ -111,7 +111,7 @@ def send_audio(name: str, f_dir: str = DIR_SEP):
 
 @app.route('/GetTwoStems')
 def separate_two():
-    if os.path.exists(DIR_STEM + "audio/") and len(os.listdir(DIR_STEM + "audio/")) == 2:
+    if os.path.exists(DIR_STEM + "audio/accompaniment.wav"):
         return "done!"
     return separate(2)
 

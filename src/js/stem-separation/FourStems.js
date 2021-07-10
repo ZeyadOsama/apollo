@@ -44,16 +44,14 @@ export class FourStems extends Component {
                     <br/>
 
                     <div className="container">
-
+                        {loading ?
                         <Jumbotron>
-                            {loading ?
                                 <div className='margin-med'>
                                     <LoadingZone/>
                                 </div>
+                        </Jumbotron>
                                 :
-                                null
-                            }
-
+                            <Jumbotron>
                             <div>
                                 <div>
                                     <h5>Vocals</h5>
@@ -82,6 +80,7 @@ export class FourStems extends Component {
                                 </div>
                             </div>
                         </Jumbotron>
+                            }
 
                     </div>
 

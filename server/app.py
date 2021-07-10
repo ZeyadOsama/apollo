@@ -24,8 +24,6 @@ dir_root = os.path.abspath(os.path.join(dir_curr, '..'))
 if dir_root not in sys.path:
     sys.path.append(dir_root)
 
-from apollo.engine.models.genre_classification.tagger import *
-
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')
 app.config['CORS_HEADERS'] = 'Content-Type'

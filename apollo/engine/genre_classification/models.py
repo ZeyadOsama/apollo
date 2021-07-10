@@ -1,34 +1,27 @@
 import tensorflow as tf
 
-from apollo.engine.models.genre_classification import configuration as config
+from apollo.engine.genre_classification import configuration as config
 
 # disabling deprecation warnings (caused by change from tensorflow 1.x to 2.x)
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 
 def define_model(x, is_training, model, num_classes):
-    if model == 'MTT_musicnn':
-        return build_musicnn(x, is_training, num_classes, num_filt_midend=64, num_units_backend=200)
-
-    elif model == 'MSD_musicnn':
-        return build_musicnn(x, is_training, num_classes, num_filt_midend=64, num_units_backend=200)
-
-    else:
-        raise ValueError('Model not implemented!')
+    return build_musicnn(x, is_training, num_classes, num_filt_midend=64, num_units_backend=200)
 
 
 def build_musicnn(x, is_training, num_classes, num_filt_frontend=1.6, num_filt_midend=64, num_units_backend=200):
-    ### front-end ### musically motivated CNN
+    # front-end, musically motivated CNN
     frontend_features_list = frontend(x, is_training, config.N_MELS, num_filt=1.6, type='7774timbraltemporal')
     # concatnate features coming from the front-end
     frontend_features = tf.concat(frontend_features_list, 2)
 
-    ### mid-end ### dense layers
+    # mid-end, dense layers
     midend_features_list = midend(frontend_features, is_training, num_filt_midend)
     # dense connection: concatnate features coming from different layers of the front- and mid-end
     midend_features = tf.concat(midend_features_list, 2)
 
-    ### back-end ### temporal pooling
+    # back-end, temporal pooling
     logits, penultimate, mean_pool, max_pool = backend(midend_features, is_training, num_classes, num_units_backend,
                                                        type='globalpool_dense')
 

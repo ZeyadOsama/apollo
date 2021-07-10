@@ -6,39 +6,14 @@ import numpy as np
 import tensorflow as tf
 from matplotlib.figure import Figure
 
-from apollo.engine.models.genre_classification import configuration as config
-from apollo.engine.models.genre_classification import models
+from apollo.engine.genre_classification import configuration as config
+from apollo.engine.genre_classification import models
 
 # disable eager mode for tf.v1 compatibility with tf.v2
 tf.compat.v1.disable_eager_execution()
 
 
 def batch_data(audio_file, n_frames, overlap):
-    '''For an efficient computation, we split the full music spectrograms in patches of length n_frames with overlap.
-
-    INPUT
-
-    - file_name: path to the music file to tag.
-    Data format: string.
-    Example: './audio/TRWJAZW128F42760DD_test.mp3'
-
-    - n_frames: length (in frames) of the input spectrogram patches.
-    Data format: integer.
-    Example: 187
-
-    - overlap: ammount of overlap (in frames) of the input spectrogram patches.
-    Note: Set it considering n_frames.
-    Data format: integer.
-    Example: 10
-
-    OUTPUT
-
-    - batch: batched audio representation. It returns spectrograms split in patches of length n_frames with overlap.
-    Data format: 3D np.array (batch, time, frequency)
-
-    - audio_rep: raw audio representation (spectrogram).
-    Data format: 2D np.array (time, frequency)
-    '''
 
     # compute the log-mel spectrogram with librosa
     audio, sr = librosa.load(audio_file, sr=config.SR)
@@ -67,55 +42,6 @@ def batch_data(audio_file, n_frames, overlap):
 
 def extractor(file_name, output_folder, model='MSD_musicnn', input_length=3, input_overlap=False,
               extract_features=True):
-    '''Extract the taggram (the temporal evolution of tags) and features (intermediate representations of the model) of the music-clip in file_name with the selected model.
-
-    INPUT
-
-    - file_name: path to the music file to tag.
-    Data format: string.
-    Example: './audio/TRWJAZW128F42760DD_test.mp3'
-
-    - model: select a music audio tagging model.
-    Data format: string.
-    Options: 'MTT_musicnn', 'MTT_vgg', 'MSD_musicnn', 'MSD_musicnn_big' or 'MSD_vgg'.
-    MTT models are trained with the MagnaTagATune dataset.
-    MSD models are trained with the Million Song Dataset.
-    To know more about these models, check our musicnn / vgg examples, and the FAQs.
-    Important! 'MSD_musicnn_big' is only available if you install from source: python setup.py install.
-
-    - input_length: length (in seconds) of the input spectrogram patches. Set it small for real-time applications.
-    Note: This is the length of the data that is going to be fed to the model. In other words, this parameter defines the temporal resolution of the taggram.
-    Recommended value: 3, because the models were trained with 3 second inputs.
-    Observation: the vgg models do not allow for different input lengths. For this reason, the vgg models' input_length needs to be set to 3. However, musicnn models allow for different input lengths: see this jupyter notebook.
-    Data format: floating point number.
-    Example: 3.1
-
-    - input_overlap: ammount of overlap (in seconds) of the input spectrogram patches.
-    Note: Set it considering the input_length.
-    Data format: floating point number.
-    Example: 1.0
-
-    - extract_features: set it True for extracting the intermediate representations of the model.
-    Data format: boolean.
-    Options: False (for NOT extracting the features), True (for extracting the features).
-
-    OUTPUT
-
-    - taggram: expresses the temporal evolution of the tags likelihood.
-    Data format: 2D np.ndarray (time, tags).
-    Example: see our basic / advanced examples.
-
-    - tags: list of tags corresponding to the tag-indices of the taggram.
-    Data format: list.
-    Example: see our FAQs page for the complete tags list.
-
-    - features: if extract_features = True, it outputs a dictionary containing the activations of the different layers the selected model has.
-    Data format: dictionary.
-    Keys (musicnn models): ['timbral', 'temporal', 'cnn1', 'cnn2', 'cnn3', 'mean_pool', 'max_pool', 'penultimate']
-    Keys (vgg models): ['pool1', 'pool2', 'pool3', 'pool4', 'pool5']
-    Example: see our musicnn and vgg examples.
-
-    '''
 
     # select model
     labels = config.MSD_LABELS
@@ -228,8 +154,7 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     # Plot Bar chart for the labels
     fig = Figure(figsize=(10, 8))
     tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
-    tags_likelihood_mean_sum = sum(tags_likelihood_mean)
-    tags_likelihood = tags_likelihood_mean / tags_likelihood_mean_sum
+    tags_likelihood = tags_likelihood_mean / sum(tags_likelihood_mean)
     ax = fig.subplots()
     # y-axis title
     ax.set_ylabel('(likelihood)', fontsize=fontsize)
@@ -248,26 +173,18 @@ def plotter(input_length, taggram, tags, output_folder, file_name):
     # Plot Pie Chart
     fig = Figure(figsize=(10, 8))
     fig.subplots_adjust(top=1, bottom=0, right=1, left=0, hspace=0, wspace=0)
-    indices = np.where(tags_likelihood >= 0.1)[0]
-    top_tags_likelihood = tags_likelihood[indices]
+    tags_likelihood_mean = np.mean(taggram, axis=0)  # averaging the Taggram through time
+    indices = np.where(tags_likelihood_mean >= 0.1)[0]
+    tags_likelihood_mean = tags_likelihood_mean[indices]
     tags = list(np.array(tags)[indices.astype(int)])
-    indices = np.argsort(-top_tags_likelihood)
-    top_tags_likelihood = top_tags_likelihood[indices]
+    indices = np.argsort(-tags_likelihood_mean)
+    tags_likelihood_mean = tags_likelihood_mean[indices]
     tags = list(np.array(tags)[indices.astype(int)])
-
-    # tags_likelihood_mean = tags_likelihood_mean / sum(tags_likelihood_mean)
-
-    print(tags_likelihood_mean)
-    print(tags)
-    labels = tags
-    print(sum(tags_likelihood_mean))
-    print(1.0 - sum(tags_likelihood_mean))
-    explode = [0] * len(labels)
+    tags_likelihood_mean = tags_likelihood_mean / sum(tags_likelihood_mean)
+    explode = [0] * len(tags)
     explode[0] = 0.2
-
-    sizes = tags_likelihood_mean
     ax1 = fig.subplots()
-    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+    ax1.pie(tags_likelihood_mean, explode=explode, labels=tags, autopct='%1.1f%%',
             shadow=True, startangle=90, wedgeprops={})
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     ax1.margins(0.1, 0.1)

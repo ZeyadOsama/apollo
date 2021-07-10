@@ -23,7 +23,7 @@ export class AudioPlayer extends Component {
         audio.addEventListener(
             "loadeddata",
             () => {
-                if(audioPlayer.current) {
+                if (audioPlayer.current) {
                     audioPlayer.current.querySelector(".time .length").textContent = getTimeCodeFromNum(audio.duration);
                     audio.volume = .75;
                 }
@@ -60,10 +60,10 @@ export class AudioPlayer extends Component {
          */
         setInterval(() => {
             if (audioPlayer.current) {
-            const progressBar = audioPlayer.current.querySelector(".progress");
-            progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-            audioPlayer.current.querySelector(".time .current").textContent = getTimeCodeFromNum(audio.currentTime);
-        }
+                const progressBar = audioPlayer.current.querySelector(".progress");
+                progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+                audioPlayer.current.querySelector(".time .current").textContent = getTimeCodeFromNum(audio.currentTime);
+            }
         }, 500);
 
 

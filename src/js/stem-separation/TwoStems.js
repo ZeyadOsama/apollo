@@ -4,6 +4,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import axios from "axios";
 import {AudioPlayer} from "../elements/AudioPlayer";
 import {LoadingZone} from "../elements/LoadingZone";
+import {DownloadButton} from "../elements/DownloadButton";
 import '../../css/styles.css';
 
 export class TwoStems extends Component {
@@ -54,15 +55,33 @@ export class TwoStems extends Component {
                             :
                         <Jumbotron>
                             <div>
-                                <div>
-                                    <h5>Vocals</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Vocals</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Vocals'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Vocals'/>
                                 </div>
 
                                 <br/>
 
-                                <div>
-                                    <h5>Instrumental</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Instrumental</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Instrumental'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>

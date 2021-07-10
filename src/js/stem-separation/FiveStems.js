@@ -4,6 +4,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import axios from "axios";
 import {AudioPlayer} from "../elements/AudioPlayer";
 import {LoadingZone} from "../elements/LoadingZone";
+import {DownloadButton} from "../elements/DownloadButton";
 import '../../css/styles.css';
 
 export class FiveStems extends Component {
@@ -54,36 +55,81 @@ export class FiveStems extends Component {
                                 :
                             <Jumbotron>
                             <div>
-                                <div>
-                                    <h5>Vocals</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Vocals</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Vocals'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Vocals'/>
                                 </div>
 
                                 <br/>
 
-                                <div>
-                                    <h5>Bass</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Bass</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Bass'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Bass'/>
                                 </div>
 
                                 <br/>
 
-                                <div>
-                                    <h5>Drums</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Drums</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Drums'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Drums'/>
                                 </div>
 
                                 <br/>
 
-                                <div>
-                                    <h5>Piano</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Piano</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Piano'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Piano'/>
                                 </div>
 
                                 <br/>
 
-                                <div>
-                                    <h5>Other</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Other</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Other'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Other'/>
                                 </div>
                             </div>

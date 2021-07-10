@@ -18,12 +18,12 @@ from flask_cors import CORS
 from pydub import AudioSegment
 from werkzeug.utils import secure_filename
 
-from apollo.engine.genre_classification.extractor import extractor
-
 dir_curr = os.path.dirname(os.path.realpath(__file__))
 dir_root = os.path.abspath(os.path.join(dir_curr, '..'))
 if dir_root not in sys.path:
     sys.path.append(dir_root)
+
+from apollo.engine.genre_classification.extractor import extractor
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')

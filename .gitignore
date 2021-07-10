@@ -703,7 +703,7 @@ Temporary Items
 .apdisk
 
 # project specifics
-#*.mp3
+*.mp3
 *.mp4
 *.wav
 *.wma

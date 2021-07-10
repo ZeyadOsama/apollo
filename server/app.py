@@ -18,12 +18,13 @@ from flask_cors import CORS
 from pydub import AudioSegment
 from werkzeug.utils import secure_filename
 
-from apollo.engine.models.genre_classification.tagger import *
 
 dir_curr = os.path.dirname(os.path.realpath(__file__))
 dir_root = os.path.abspath(os.path.join(dir_curr, '..'))
 if dir_root not in sys.path:
     sys.path.append(dir_root)
+
+from apollo.engine.models.genre_classification.tagger import *
 
 app = Flask(__name__)
 cors = CORS(app, expose_headers='Authorization')
@@ -86,12 +87,12 @@ def uploaded_file():
             secure = DIR_RESULTS + secure_filename(f.filename)
             f.save(secure)
             AudioSegment.from_wav(secure).export(DIR_RESULTS + RESULT_MP3, format="mp3")
+        if os.path.exists(DIR_STEM + "audio/"):
+            shutil.rmtree(DIR_STEM + "audio/")
     return "done!"
 
 
 def separate(num: int):
-    if os.path.exists(DIR_STEM + "audio/"):
-        shutil.rmtree(DIR_STEM + "audio/")
     os.system(
         "spleeter separate -i {}audio.wav -p spleeter:{}stems -B tensorflow -o {}".format(DIR_RESULTS, num, DIR_STEM))
     return "done!"
@@ -110,16 +111,22 @@ def send_audio(name: str, f_dir: str = DIR_SEP):
 
 @app.route('/GetTwoStems')
 def separate_two():
+    if os.path.exists(DIR_STEM + "audio/") and len(os.listdir(DIR_STEM + "audio/")) == 2:
+        return "done!"
     return separate(2)
 
 
 @app.route('/GetFourStems')
 def separate_four():
+    if os.path.exists(DIR_STEM + "audio/") and len(os.listdir(DIR_STEM + "audio/")) >= 4:
+        return "done!"
     return separate(4)
 
 
 @app.route('/GetFiveStems')
 def separate_five():
+    if os.path.exists(DIR_STEM + "audio/piano.wav"):
+        return "done!"
     return separate(5)
 
 

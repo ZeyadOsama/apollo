@@ -1,0 +1,14 @@
+.download-btn {
+    color: white;
+    font-size: large;
+}
+
+.download-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.download-btn a:hover {
+    color: #49a09d;
+    text-decoration: none;
+}

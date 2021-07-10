@@ -18,6 +18,7 @@ from flask_cors import CORS
 from pydub import AudioSegment
 from werkzeug.utils import secure_filename
 
+from apollo.engine.genre_classification.extractor import extractor
 
 dir_curr = os.path.dirname(os.path.realpath(__file__))
 dir_root = os.path.abspath(os.path.join(dir_curr, '..'))

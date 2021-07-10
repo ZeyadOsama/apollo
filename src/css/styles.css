@@ -189,8 +189,6 @@ li a:hover {
 
 .btn-outline-secondary {
     color: rgb(201, 39, 88);
-
-
 }
 
 .jumbotron {
@@ -222,11 +220,4 @@ li a:hover {
 .flex-center {
     display: flex;
     justify-content: center;
-}
-
-#download-icon.btn.btn-default {
-    float: right;
-    display: flex;
-    color: white;
-    font-size: large;
 }

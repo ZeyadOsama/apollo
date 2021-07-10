@@ -47,31 +47,46 @@ export class TwoStems extends Component {
                     <div className="container">
 
                         <Jumbotron>
-                            {/*{loading ?*/}
-                            {/*    <div className='margin-med'>*/}
-                            {/*        <LoadingZone/>*/}
-                            {/*    </div>*/}
-                            {/*    :*/}
-                            {/*    null*/}
-                            {/*}*/}
+                            {loading ?
+                                <div className='margin-med'>
+                                    <LoadingZone/>
+                                </div>
+                                :
+                                null
+                            }
 
                             <div>
-                                <div>
-                                <div>
-                                    <DownloadButton/>
-                                    <h5>Vocals</h5>
-                                </div>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Vocals</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Vocals'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Vocals'/>
                                 </div>
 
                                 <br/>
 
-                                <div>
-                                    <DownloadButton/>
-                                    <h5>Instrumental</h5>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col">
+                                            <h5>Instrumental</h5>
+                                        </div>
+                                        <div className="col">
+                                            <div className='float-right'>
+                                                <DownloadButton file='Instrumental'/>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <AudioPlayer name='Instrumental'/>
                                 </div>
                             </div>
+
                         </Jumbotron>
 
                     </div>

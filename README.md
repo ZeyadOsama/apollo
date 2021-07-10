@@ -70,6 +70,8 @@ cd server
 flask run
 ```
 
+Go to [samples](/samples) for some audio files samples to try the whole project.
+
 ## Changelog
 
 For all-time versions, please see the [CHANGELOG](CHANGELOG.rst) file.

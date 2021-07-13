@@ -1,0 +1,36 @@
+.animation, .animation span {
+    animation-duration: 1.25s;
+    animation-fill-mode: both;
+}
+
+.animation span {
+    display: inline-block
+}
+
+.fadeInBottom-wide {
+    animation-name: fadeInBottom-wide
+}
+
+@keyframes fadeInBottom-wide {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.fadeInBottom-narrow {
+    animation-name: fadeInBottom-narrow
+}
+
+@keyframes fadeInBottom-narrow {
+    from {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    to {
+        opacity: 1
+    }
+}
